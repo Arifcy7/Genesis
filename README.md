@@ -8,7 +8,11 @@
 </div>
 
 <div align="center">
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/UJ_e_pjYZy8" title="Veritas Demo Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+[![Veritas Demo Video](https://img.youtube.com/vi/UJ_e_pjYZy8/maxresdefault.jpg)](https://youtu.be/UJ_e_pjYZy8)
+
+**🎥 Watch the Complete Demo: [Veritas in Action](https://youtu.be/UJ_e_pjYZy8)**
+
 </div>
 
 ## 🌟 The World's Most Advanced Agentic AI for Truth Verification
