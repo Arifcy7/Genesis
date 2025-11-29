@@ -7,6 +7,10 @@
   <img src="https://img.shields.io/badge/Real--time-Scanning-orange?style=for-the-badge&logo=zap" alt="Real-time"/>
 </div>
 
+<div align="center">
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/UJ_e_pjYZy8" title="Veritas Demo Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
+
 ## 🌟 The World's Most Advanced Agentic AI for Truth Verification
 
 **Veritas** is not just another fact-checker—it's a revolutionary Multi-Agent Truth Verification System that deploys autonomous AI agents to combat misinformation at scale. Built for the MumbaiHacks 2025 Misinformation track, Veritas transforms how professionals verify information in real-time crises.
@@ -326,10 +330,6 @@ Companies can chat with their news data: "Show me all negative news from last we
 - **Popup Interface:** Quick access to verification history
 
 ## 📦 Installation
-
-### 🎥 Demo Video
-Watch our comprehensive demo showcasing Veritas in action:  
-**[Veritas Demo Video](https://drive.google.com/file/d/1x-W4FNfygv3ROV-H2SsP73jsrCbc-qs4/view?usp=sharing)**
 
 ### Prerequisites
 - Node.js 18+
