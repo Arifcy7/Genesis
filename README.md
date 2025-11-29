@@ -1,4 +1,4 @@
-# Veritas: Multi-Agent Truth Operating System
+# Veritas: Multi-Agent Truth Verification System
 
 <div align="center">
   <img src="https://img.shields.io/badge/Agentic%20AI-Powered-blue?style=for-the-badge&logo=robot" alt="Agentic AI"/>
@@ -9,7 +9,7 @@
 
 ## 🌟 The World's Most Advanced Agentic AI for Truth Verification
 
-**Veritas** is not just another fact-checker—it's a revolutionary Multi-Agent Truth Operating System that deploys autonomous AI agents to combat misinformation at scale. Built for the MumbaiHacks 2025 Misinformation track, Veritas transforms how professionals verify information in real-time crises.
+**Veritas** is not just another fact-checker—it's a revolutionary Multi-Agent Truth Verification System that deploys autonomous AI agents to combat misinformation at scale. Built for the MumbaiHacks 2025 Misinformation track, Veritas transforms how professionals verify information in real-time crises.
 
 > **"In a world drowning in information, Veritas is the lighthouse that cuts through the fog of misinformation."**
 
@@ -36,6 +36,20 @@
 Global crises like pandemics, geopolitical conflicts, or climate events generate a surge of online information, much of it confusing, conflicting, or deliberately false. This overload makes it difficult for citizens to know what to trust and how to act—leading to misinformation-driven harm.
 
 **Agentic AI Challenge:** Build an AI agent capable of scanning multiple content streams and detecting emerging misinformation trends related to global or local crises. The agent should verify claims using cross-references and produce accessible, contextual explanations or corrections for diverse audiences.
+
+## 📋 Solution Summary: Veritas Multi-Agent Truth Verification System
+
+**Veritas** is a revolutionary Multi-Agent Truth Verification System deploying 7 autonomous AI agents for real-time misinformation combat. Unlike reactive fact-checkers, Veritas operates proactively through swarm intelligence, processing text, voice, images, and data streams simultaneously.
+
+**Core Architecture** features specialized agents: Main Orchestrator for intelligent routing, Check Agent for multi-source verification with 0.0-1.0 confidence scoring, Image Agent for visual content analysis, Synthesis Agent for professional responses, Transcriber for audio processing, and Voice Agent for conversational verification. Corporate Intelligence includes Web Discovery, News Aggregation, and Cross-Reference agents, plus Conversational Analytics for natural language data queries.
+
+**Problem-Solution Mapping** addresses misinformation crises through proactive detection, multi-modal verification, confidence-based assessment, and professional workflows. The system provides precise bias ratings, impact scoring, and verifiable source citations, enabling journalists, traders, YouTubers, and researchers to make informed decisions instantly.
+
+**Technical Innovation** pioneers Agent-to-Agent communication protocols with native Google Search, Gemini Vision, and WebRTC integration. The temporal graph database enables trend analysis, while WebSocket streaming supports real-time voice and data processing.
+
+**User Ecosystem** includes a responsive Next.js web platform, Chrome extension for browser integration, and API-first design for enterprise scalability. The dual-sided business model offers user subscriptions (Free/Pro/Pro Max) and custom enterprise intelligence solutions.
+
+**Market Impact** delivers sub-second verification, crisis-scale processing, and professional-grade accuracy. Veritas prevents misinformation harm through autonomous systems, directly addressing MumbaiHacks requirements with agentic AI, crisis specialization, and diverse audience accessibility.
 
 ## 🚀 Key Features
 
@@ -109,8 +123,8 @@ Custom enterprise solutions for organizations requiring comprehensive misinforma
 
 ## 🛠️ Tech Stack
 
-- **AI Framework:** Google GenAI SDK with Gemini 2.5 Flash
-- **Agent Architecture:** Real A2A (Agent-to-Agent) communication protocols
+- **AI Framework:** **Google GenAI SDK** with Gemini 2.5 Flash
+- **Agent Architecture:** **Real A2A** (Agent-to-Agent) communication protocols
 - **Search Tools:** Google Search API for real-time web verification
 - **Backend:** FastAPI (Python) for high-performance async operations
 - **Database:** MongoDB for temporal graph storage and news tracking
@@ -120,7 +134,23 @@ Custom enterprise solutions for organizations requiring comprehensive misinforma
 - **Deployment:** Docker containers with auto-scaling
 - **Security:** JWT authentication, API rate limiting, data encryption
 
-### For Traders & Investors
+## ⚡ Why Veritas is Superior: Feature Comparison
+
+| Feature | Veritas | Perplexity AI | ChatGPT | The Quint | Google Fact Check Tools |
+|---------|---------|---------------|---------|-----------|-------------------------|
+| **Agentic AI** | ✅ Multi-agent orchestration with A2A protocols | ❌ Single model responses | ❌ No autonomous agents | ❌ Manual fact-checking only | ❌ Tools for publishers, no AI agents |
+| **Real-Time Scanning** | ✅ Proactive crisis trend detection | ❌ Static search results | ❌ No real-time capabilities | ❌ Manual article-based checking | ❌ No real-time scanning |
+| **Multi-Source Verification** | ✅ Cross-references 5+ sources per claim | ✅ Basic source linking | ❌ No verification tools | ✅ Manual multi-source verification | ✅ Structured data markup |
+| **Visual Claim Detection** | ✅ OCR + fact-check from images | ❌ No image processing | ❌ Limited image analysis | ❌ No image processing | ❌ No image verification |
+| **Voice Integration** | ✅ Real-time voice fact-checking | ❌ Text-only | ❌ No voice tools | ❌ Text-only | ❌ No voice features |
+| **Corporate Intelligence** | ✅ Dedicated company analysis engine | ❌ No specialized tracking | ❌ Generic responses | ❌ No corporate focus | ❌ No corporate intelligence |
+| **Temporal Analytics** | ✅ Trend graphs over time | ❌ No historical tracking | ❌ No temporal features | ❌ Limited historical data | ❌ No temporal analytics |
+| **Bias Assessment** | ✅ Low/Medium/High bias scoring | ❌ No bias detection | ❌ No bias analysis | ✅ Manual bias assessment | ❌ No bias assessment |
+| **Confidence Scoring** | ✅ Precise 0.0-1.0 float values | ❌ Binary true/false | ❌ No confidence metrics | ❌ Qualitative assessments only | ❌ No confidence scoring |
+| **Chrome Extension** | ✅ Browser-integrated verification | ❌ No extension | ❌ No extension | ❌ No extension | ❌ No extension |
+| **Business Model** | ✅ Dual-sided marketplace (users + enterprise) | ✅ Subscription model | ❌ No monetization tools | ❌ Ad-supported, no subscriptions | ❌ Free tools, no monetization |
+
+**Verdict:** Veritas combines the best of search engines, AI chatbots, and specialized verification tools into one autonomous system. While Perplexity excels at search and ChatGPT at conversation, only Veritas deploys multiple agents working together for comprehensive truth verification. The Quint and Google tools are valuable but limited to manual processes and publisher tools respectively.
 **Pain Point:** Traders risk massive financial losses by acting on viral market rumors, fake earnings reports, or manipulated stock news that can crash portfolios in minutes.
 
 **Veritas Solution:** Our Corporate Intelligence Engine provides real-time news verification with a Reliability Score, sentiment analysis, and temporal tracking. Traders get a "market truth dashboard" showing verified vs. fake news ratios, preventing costly decisions based on misinformation.
@@ -277,95 +307,6 @@ All verified data stored in MongoDB with timestamps, enabling trend analysis ove
 Companies can chat with their news data: "Show me all negative news from last week" or "Summarize product launch announcements."
 
 **Prompt-Based Queries:** Instead of raw data dumps, users get natural language summaries and insights.
-
-## 🛠️ Tech Stack
-
-- **AI Framework:** Google GenAI SDK with Gemini 2.5 Flash
-- **Agent Architecture:** Real A2A (Agent-to-Agent) communication protocols
-- **Search Tools:** Google Search API for real-time web verification
-- **Backend:** FastAPI (Python) for high-performance async operations
-- **Database:** MongoDB for temporal graph storage and news tracking
-- **Frontend:** Next.js 14 with React components
-- **Real-Time:** WebSocket integration for voice and live updates
-- **Audio:** Native audio processing with WebRTC
-- **Deployment:** Docker containers with auto-scaling
-- **Security:** JWT authentication, API rate limiting, data encryption
-
-## ⚡ Why Veritas is Superior: Feature Comparison
-
-| Feature | Veritas | Perplexity AI | ChatGPT | The Quint | Google Fact Check Tools |
-|---------|---------|---------------|---------|-----------|-------------------------|
-| **Agentic AI** | ✅ Multi-agent orchestration with A2A protocols | ❌ Single model responses | ❌ No autonomous agents | ❌ Manual fact-checking only | ❌ Tools for publishers, no AI agents |
-| **Real-Time Scanning** | ✅ Proactive crisis trend detection | ❌ Static search results | ❌ No real-time capabilities | ❌ Manual article-based checking | ❌ No real-time scanning |
-| **Multi-Source Verification** | ✅ Cross-references 5+ sources per claim | ✅ Basic source linking | ❌ No verification tools | ✅ Manual multi-source verification | ✅ Structured data markup |
-| **Visual Claim Detection** | ✅ OCR + fact-check from images | ❌ No image processing | ❌ Limited image analysis | ❌ No image processing | ❌ No image verification |
-| **Voice Integration** | ✅ Real-time voice fact-checking | ❌ Text-only | ❌ No voice tools | ❌ Text-only | ❌ No voice features |
-| **Corporate Intelligence** | ✅ Dedicated company analysis engine | ❌ No specialized tracking | ❌ Generic responses | ❌ No corporate focus | ❌ No corporate intelligence |
-| **Temporal Analytics** | ✅ Trend graphs over time | ❌ No historical tracking | ❌ No temporal features | ❌ Limited historical data | ❌ No temporal analytics |
-| **Bias Assessment** | ✅ Low/Medium/High bias scoring | ❌ No bias detection | ❌ No bias analysis | ✅ Manual bias assessment | ❌ No bias assessment |
-| **Confidence Scoring** | ✅ Precise 0.0-1.0 float values | ❌ Binary true/false | ❌ No confidence metrics | ❌ Qualitative assessments only | ❌ No confidence scoring |
-| **Chrome Extension** | ✅ Browser-integrated verification | ❌ No extension | ❌ No extension | ❌ No extension | ❌ No extension |
-| **Business Model** | ✅ Dual-sided marketplace (users + enterprise) | ✅ Subscription model | ❌ No monetization tools | ❌ Ad-supported, no subscriptions | ❌ Free tools, no monetization |
-
-**Verdict:** Veritas combines the best of search engines, AI chatbots, and specialized verification tools into one autonomous system. While Perplexity excels at search and ChatGPT at conversation, only Veritas deploys multiple agents working together for comprehensive truth verification. The Quint and Google tools are valuable but limited to manual processes and publisher tools respectively.
-
-## 💼 Business Model
-
-Veritas offers a dual-sided marketplace: **User Subscriptions** for individual professionals and **Company Intelligence** for organizations. Our platform monetizes through tiered access to our agentic AI capabilities, balancing accessibility with premium features.
-
-### Individual User Subscriptions
-
-Targeted at journalists, traders, researchers, and YouTubers who need reliable truth verification in their workflows.
-
-#### Free Tier - Free
-- **Basic Text Chat**: Text-to-text conversations with AI agents for fact-checking
-- **Audio Transcription**: Convert voice notes/interviews to text (limited to 10 minutes/day)
-- **Limited Queries**: 10 verification queries per day
-- **Basic Features**: Standard fact-checking, simple claims verification
-- **Community Access**: Basic Chrome extension integration
-
-#### Pro Tier - ₹500/month
-- **All Features Unlocked**: Access to image verification, voice chat, crisis scanning
-- **3x Credits**: 150 verification queries per day
-- **Advanced Tools**: Bias assessment, confidence scoring, source analysis
-- **Priority Support**: Email support with 24-hour response
-- **Chrome Extension Pro**: Advanced browser integration with auto-scanning
-
-#### Pro Max Tier - ₹3,000/month
-- **Unlimited Access**: No query limits on all features
-- **Premium Voice**: Real-time voice conversations with agents
-- **Custom Integrations**: API access for workflow automation
-- **White-Label Options**: Branded verification tools for content creators
-- **Dedicated Support**: Phone/video support, custom training sessions
-
-### Company Intelligence Platform
-
-Custom enterprise solutions for organizations requiring comprehensive misinformation monitoring and corporate intelligence.
-
-#### Custom Pricing (Quote-Based)
-- **Dashboard Analytics**: Automated news fetching and verification for company monitoring
-- **Conversational Intelligence**: AI chatbot interface for understanding complex news data
-- **Temporal Analysis**: Historical trend tracking and predictive insights
-- **Multi-User Access**: Team collaboration with role-based permissions
-- **API Integration**: Full REST API access for custom applications
-- **White-Label Solutions**: Fully branded platform for enterprise deployment
-
-#### Enterprise Features
-- **Real-Time Alerts**: Instant notifications for brand-related misinformation
-- **Regulatory Compliance**: Audit trails and compliance reporting
-- **Custom Agent Training**: Domain-specific verification models
-- **Dedicated Infrastructure**: Private cloud deployment options
-- **SLA Guarantees**: 99.9% uptime with priority support
-
-### Revenue Projections
-- **Year 1**: $1.2M (10,000 free users, 500 Pro subscribers, 20 enterprise clients)
-- **Year 2**: $8M (50,000 users, 2,000 Pro subscribers, 100 enterprises)
-- **Year 3**: $25M+ (200,000+ users, market leadership in AI verification)
-
-### Go-to-Market Strategy
-**Phase 1**: Free tier launch with Chrome extension for viral growth among content creators
-**Phase 2**: Pro tier targeting professional journalists and traders
-**Phase 3**: Enterprise expansion with custom company intelligence solutions
 
 ## 🌐 Chrome Extension
 
