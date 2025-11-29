@@ -49,7 +49,76 @@ Global crises like pandemics, geopolitical conflicts, or climate events generate
 - **💬 Conversational AI**: Chat with verified news data using natural language
 - **📱 Cross-Platform**: Web app, API, and browser extension support
 
-## 💡 Pain Points & Solutions
+## 💼 Business Model
+
+Veritas offers a dual-sided marketplace: **User Subscriptions** for individual professionals and **Company Intelligence** for organizations. Our platform monetizes through tiered access to our agentic AI capabilities, balancing accessibility with premium features.
+
+### Individual User Subscriptions
+
+Targeted at journalists, traders, researchers, and YouTubers who need reliable truth verification in their workflows.
+
+#### Free Tier - Free
+- **Basic Text Chat**: Text-to-text conversations with AI agents for fact-checking
+- **Audio Transcription**: Convert voice notes/interviews to text (limited to 10 minutes/day)
+- **Limited Queries**: 10 verification queries per day
+- **Basic Features**: Standard fact-checking, simple claims verification
+- **Community Access**: Basic Chrome extension integration
+
+#### Pro Tier - ₹500/month
+- **All Features Unlocked**: Access to image verification, voice chat, crisis scanning
+- **3x Credits**: 150 verification queries per day
+- **Advanced Tools**: Bias assessment, confidence scoring, source analysis
+- **Priority Support**: Email support with 24-hour response
+- **Chrome Extension Pro**: Advanced browser integration with auto-scanning
+
+#### Pro Max Tier - ₹3,000/month
+- **Unlimited Access**: No query limits on all features
+- **Premium Voice**: Real-time voice conversations with agents
+- **Custom Integrations**: API access for workflow automation
+- **White-Label Options**: Branded verification tools for content creators
+- **Dedicated Support**: Phone/video support, custom training sessions
+
+### Company Intelligence Platform
+
+Custom enterprise solutions for organizations requiring comprehensive misinformation monitoring and corporate intelligence.
+
+#### Custom Pricing (Quote-Based)
+- **Dashboard Analytics**: Automated news fetching and verification for company monitoring
+- **Conversational Intelligence**: AI chatbot interface for understanding complex news data
+- **Temporal Analysis**: Historical trend tracking and predictive insights
+- **Multi-User Access**: Team collaboration with role-based permissions
+- **API Integration**: Full REST API access for custom applications
+- **White-Label Solutions**: Fully branded platform for enterprise deployment
+
+#### Enterprise Features
+- **Real-Time Alerts**: Instant notifications for brand-related misinformation
+- **Regulatory Compliance**: Audit trails and compliance reporting
+- **Custom Agent Training**: Domain-specific verification models
+- **Dedicated Infrastructure**: Private cloud deployment options
+- **SLA Guarantees**: 99.9% uptime with priority support
+
+### Revenue Projections
+- **Year 1**: ₹10 crore (10,000 free users, 500 Pro subscribers, 20 enterprise clients)
+- **Year 2**: ₹66 crore (50,000 users, 2,000 Pro subscribers, 100 enterprises)
+- **Year 3**: ₹200 crore+ (200,000+ users, market leadership in AI verification)
+
+### Go-to-Market Strategy
+**Phase 1**: Free tier launch with Chrome extension for viral growth among content creators
+**Phase 2**: Pro tier targeting professional journalists and traders
+**Phase 3**: Enterprise expansion with custom company intelligence solutions
+
+## 🛠️ Tech Stack
+
+- **AI Framework:** Google GenAI SDK with Gemini 2.5 Flash
+- **Agent Architecture:** Real A2A (Agent-to-Agent) communication protocols
+- **Search Tools:** Google Search API for real-time web verification
+- **Backend:** FastAPI (Python) for high-performance async operations
+- **Database:** MongoDB for temporal graph storage and news tracking
+- **Frontend:** Next.js 14 with React components
+- **Real-Time:** WebSocket integration for voice and live updates
+- **Audio:** Native audio processing with WebRTC
+- **Deployment:** Docker containers with auto-scaling
+- **Security:** JWT authentication, API rate limiting, data encryption
 
 ### For Traders & Investors
 **Pain Point:** Traders risk massive financial losses by acting on viral market rumors, fake earnings reports, or manipulated stock news that can crash portfolios in minutes.
@@ -71,51 +140,99 @@ Global crises like pandemics, geopolitical conflicts, or climate events generate
 
 **Veritas Solution:** Confidence scoring (0.0-1.0), bias assessment, and comprehensive source grounding provide academic-grade verification. The synthesis agent structures findings into professional reports with evidence paragraphs.
 
-## 🔄 How It Works: Agent Flows
+## 🔄 How It Works: Complete Agent Flows & Explanations
 
-Veritas employs a sophisticated agent orchestration system, inspired by real A2A (Agent-to-Agent) communication protocols. Here's how the agents collaborate:
+Veritas employs a sophisticated agent orchestration system, inspired by real A2A (Agent-to-Agent) communication protocols. Here's the complete breakdown of how our 4 specialized agents collaborate across all use cases:
 
-### 1. Main Agent → Check Agent Flow (Fact-Checking Pipeline)
+### 1. Main Agent → Check Agent Flow (Core Fact-Checking Pipeline)
 ```
-User Query → Main Agent (Routes) → Check Agent (Google Search + Verification) → Synthesis Agent (Professional Response)
-```
-
-**Example:** User asks "Is the claim 'COVID-19 vaccines cause infertility' true?"
-- **Main Agent:** Recognizes factual query, delegates to Check Agent
-- **Check Agent:** Searches Google, analyzes sources, returns VERDICT: FAKE, CONFIDENCE: 0.92, EXPLANATION: "Multiple studies show no link...", SOURCES: [WHO, CDC, Lancet]
-- **Synthesis Agent:** Creates: "❌ This claim is FALSE. Vaccines do not cause infertility. Studies from WHO and CDC confirm safety..."
-
-### 2. Main Agent → Scan Crisis Flow (Proactive Monitoring)
-```
-User Request → Main Agent → Scan Crisis Action → Check Agent (Batch Verification) → Structured Trend Report
+User Query → Main Agent (Intelligent Routing) → Check Agent (Multi-Source Verification) → Synthesis Agent (Professional Response)
 ```
 
-**Example:** User says "Scan for misinformation about the Ukraine conflict"
-- **Main Agent:** Triggers SCAN_CRISIS with topic="Ukraine conflict"
-- **System:** Finds top 3 trending claims: ["Russia won Battle of Kyiv", "NATO invaded first", "Peace deal signed"]
-- **Check Agent:** Verifies each claim with sources
-- **Output:** Real-time dashboard with severity levels, volume metrics, and verified corrections
+**Detailed Process:**
+- **Main Agent Analysis**: Uses Gemini 2.5 Flash to understand query intent, determines if fact-checking is needed
+- **Check Agent Execution**: Performs Google Search with grounding, analyzes 5+ sources, calculates confidence scores (0.0-1.0)
+- **Synthesis Agent**: Structures response with verdict emojis, evidence paragraphs, and source citations
+- **Example**: "Is 5G linked to COVID-19?" → VERDICT: FAKE, CONFIDENCE: 0.95 → Professional explanation with WHO sources
 
-### 3. Main Agent → Process Image Flow (Visual Verification)
-```
-Image Upload → Main Agent → Image Agent (OCR + Extraction) → Check Agent → Verified Claims
-```
+**Use Cases**: Journalists verifying claims, Traders checking market rumors, Researchers validating data
 
-**Example:** User uploads screenshot of a viral tweet claiming "Stock market crashed 50%"
-- **Image Agent:** Extracts text: "BREAKING: Dow Jones down 50% after Fed announcement"
-- **Check Agent:** Verifies against real market data
-- **Result:** "FAKE: Dow Jones actually up 0.3% today. Source: Bloomberg, NYSE"
-
-### 4. Voice Interaction Flow (Real-Time Conversation)
+### 2. Main Agent → Scan Crisis Flow (Proactive Misinformation Detection)
 ```
-User Speech → Transcriber → Live Gemini Session → Tool Calls → Check Agent → Voice Response
+User/Crisis Trigger → Main Agent → Scan Crisis Action → Batch Check Agent Calls → Trend Analysis → Dashboard Report
 ```
 
-**Example:** Podcaster says "Is it true that electric cars cause more pollution than gas?"
-- **Transcriber:** Converts speech to text
-- **Gemini Live:** Recognizes fact-check need, calls verify_fact tool
-- **Check Agent:** Returns verdict with sources
-- **Voice Response:** "Actually, electric cars produce zero tailpipe emissions..."
+**Detailed Process:**
+- **Crisis Detection**: Monitors trending topics using Google Search trends
+- **Automated Scanning**: Finds top 3-5 viral claims per crisis
+- **Parallel Verification**: Check Agent processes multiple claims simultaneously
+- **Trend Analytics**: Aggregates severity levels, volume metrics, and emerging patterns
+- **Example**: Ukraine conflict → Scans for "Russia won Kyiv", "Peace treaty signed" → Real-time dashboard with verified corrections
+
+**Use Cases**: Breaking news monitoring, Crisis response teams, Content moderation
+
+### 3. Main Agent → Process Image Flow (Visual Content Verification)
+```
+Image Upload → Main Agent → Image Agent (OCR + Extraction) → Check Agent (Claim Verification) → Verified Output
+```
+
+**Detailed Process:**
+- **Image Agent**: Uses Gemini Vision to extract text, claims, and context from images/screenshots
+- **Claim Isolation**: Identifies specific factual claims (headlines, social posts, charts)
+- **Cross-Verification**: Check Agent validates against real data sources
+- **Context Preservation**: Maintains original image context in verification results
+- **Example**: Viral tweet screenshot → Extracts "Stock crashed 50%" → Verifies against NYSE data → "FAKE: Actually +0.3%"
+
+**Use Cases**: Social media verification, News screenshot checking, Visual misinformation detection
+
+### 4. Voice Interaction Flow (Real-Time Conversational Verification)
+```
+User Speech → Transcriber Agent → Live Gemini Session → Tool Calls → Check Agent → Voice Response Synthesis
+```
+
+**Detailed Process:**
+- **Audio Transcription**: Real-time speech-to-text with WebRTC
+- **Live AI Session**: Gemini 2.5 Flash maintains conversation context
+- **Dynamic Tool Calling**: Automatically invokes verification when factual questions detected
+- **Voice Response**: Synthesized audio responses with natural conversation flow
+- **Example**: "Does electric vehicle production hurt the environment?" → Live verification → Voice explanation with EPA data
+
+**Use Cases**: Podcasting, Interviews, Accessibility for visually impaired users
+
+### 5. Company Intelligence Flow (Enterprise Analysis Pipeline)
+```
+Company Registration → Agent 1 (Web Discovery) → Agent 2 (News Aggregation) → Agent 3 (Verification) → Dashboard Storage → Conversational Interface
+```
+
+**Detailed Process:**
+- **Agent 1**: Searches for official websites, social media, investor relations
+- **Agent 2**: Executes 5 targeted searches for 30 news items across categories
+- **Agent 3**: Cross-references each news item with official sources, assigns bias/impact scores
+- **Temporal Storage**: MongoDB graph database with timestamped relationships
+- **Query Interface**: Natural language queries like "Show negative news from last week"
+
+**Use Cases**: Corporate reputation monitoring, Investor due diligence, Brand protection
+
+### 6. Data Query Flow (Conversational Analytics)
+```
+User Question → Query Routing Agent → Database Retrieval → AI Analysis Agent → Natural Language Response
+```
+
+**Detailed Process:**
+- **Intent Classification**: Determines query type (statistics, sources, timeline, etc.)
+- **Smart Filtering**: Applies date ranges, verdict filters, category filters
+- **AI Synthesis**: Transforms raw data into conversational insights
+- **Context Preservation**: Maintains data relationships and temporal context
+- **Example**: "How has our reliability score changed?" → Analyzes trend data → "Improved 15% this month due to fewer fake news items"
+
+**Use Cases**: Executive reporting, Stakeholder communication, Data-driven decision making
+
+### System Architecture Benefits
+- **Scalability**: Agents can process hundreds of queries simultaneously
+- **Accuracy**: Multi-source verification with confidence scoring
+- **Speed**: Sub-second responses for most queries
+- **Reliability**: Fallback mechanisms and error recovery
+- **Extensibility**: New agents can be added for specialized verification tasks
 
 ## 🏢 Company Intelligence Dashboard
 
@@ -176,55 +293,79 @@ Companies can chat with their news data: "Show me all negative news from last we
 
 ## ⚡ Why Veritas is Superior: Feature Comparison
 
-| Feature | Veritas | Perplexity AI | ChatGPT |
-|---------|---------|---------------|---------|
-| **Agentic AI** | ✅ Multi-agent orchestration with A2A protocols | ❌ Single model responses | ❌ No autonomous agents |
-| **Real-Time Scanning** | ✅ Proactive crisis trend detection | ❌ Static search results | ❌ No real-time capabilities |
-| **Multi-Source Verification** | ✅ Cross-references 5+ sources per claim | ✅ Basic source linking | ❌ No verification tools |
-| **Visual Claim Detection** | ✅ OCR + fact-check from images | ❌ No image processing | ❌ Limited image analysis |
-| **Voice Integration** | ✅ Real-time voice fact-checking | ❌ Text-only | ❌ No voice tools |
-| **Corporate Intelligence** | ✅ Dedicated company analysis engine | ❌ No specialized tracking | ❌ Generic responses |
-| **Temporal Analytics** | ✅ Trend graphs over time | ❌ No historical tracking | ❌ No temporal features |
-| **Bias Assessment** | ✅ Low/Medium/High bias scoring | ❌ No bias detection | ❌ No bias analysis |
-| **Confidence Scoring** | ✅ Precise 0.0-1.0 float values | ❌ Binary true/false | ❌ No confidence metrics |
-| **Chrome Extension** | ✅ Browser-integrated verification | ❌ No extension | ❌ No extension |
-| **Business Model** | ✅ Enterprise SaaS + API | ✅ Subscription model | ❌ No monetization tools |
+| Feature | Veritas | Perplexity AI | ChatGPT | The Quint | Google Fact Check Tools |
+|---------|---------|---------------|---------|-----------|-------------------------|
+| **Agentic AI** | ✅ Multi-agent orchestration with A2A protocols | ❌ Single model responses | ❌ No autonomous agents | ❌ Manual fact-checking only | ❌ Tools for publishers, no AI agents |
+| **Real-Time Scanning** | ✅ Proactive crisis trend detection | ❌ Static search results | ❌ No real-time capabilities | ❌ Manual article-based checking | ❌ No real-time scanning |
+| **Multi-Source Verification** | ✅ Cross-references 5+ sources per claim | ✅ Basic source linking | ❌ No verification tools | ✅ Manual multi-source verification | ✅ Structured data markup |
+| **Visual Claim Detection** | ✅ OCR + fact-check from images | ❌ No image processing | ❌ Limited image analysis | ❌ No image processing | ❌ No image verification |
+| **Voice Integration** | ✅ Real-time voice fact-checking | ❌ Text-only | ❌ No voice tools | ❌ Text-only | ❌ No voice features |
+| **Corporate Intelligence** | ✅ Dedicated company analysis engine | ❌ No specialized tracking | ❌ Generic responses | ❌ No corporate focus | ❌ No corporate intelligence |
+| **Temporal Analytics** | ✅ Trend graphs over time | ❌ No historical tracking | ❌ No temporal features | ❌ Limited historical data | ❌ No temporal analytics |
+| **Bias Assessment** | ✅ Low/Medium/High bias scoring | ❌ No bias detection | ❌ No bias analysis | ✅ Manual bias assessment | ❌ No bias assessment |
+| **Confidence Scoring** | ✅ Precise 0.0-1.0 float values | ❌ Binary true/false | ❌ No confidence metrics | ❌ Qualitative assessments only | ❌ No confidence scoring |
+| **Chrome Extension** | ✅ Browser-integrated verification | ❌ No extension | ❌ No extension | ❌ No extension | ❌ No extension |
+| **Business Model** | ✅ Dual-sided marketplace (users + enterprise) | ✅ Subscription model | ❌ No monetization tools | ❌ Ad-supported, no subscriptions | ❌ Free tools, no monetization |
 
-**Verdict:** Veritas combines the best of search engines, AI chatbots, and specialized verification tools into one autonomous system. While Perplexity excels at search and ChatGPT at conversation, only Veritas deploys multiple agents working together for comprehensive truth verification.
+**Verdict:** Veritas combines the best of search engines, AI chatbots, and specialized verification tools into one autonomous system. While Perplexity excels at search and ChatGPT at conversation, only Veritas deploys multiple agents working together for comprehensive truth verification. The Quint and Google tools are valuable but limited to manual processes and publisher tools respectively.
 
 ## 💼 Business Model
 
-### Core Monetization Strategies
+Veritas offers a dual-sided marketplace: **User Subscriptions** for individual professionals and **Company Intelligence** for organizations. Our platform monetizes through tiered access to our agentic AI capabilities, balancing accessibility with premium features.
 
-1. **Enterprise SaaS Subscription**
-   - **Tier 1 (Starter):** $49/month - Basic fact-checking, 100 queries/day
-   - **Tier 2 (Professional):** $149/month - Voice integration, image verification, unlimited queries
-   - **Tier 3 (Enterprise):** $499/month - Corporate intelligence, API access, white-label options
+### Individual User Subscriptions
 
-2. **API Licensing**
-   - **Developer Tier:** $0.01 per API call for fact-checking
-   - **Enterprise Tier:** Custom SLAs, dedicated infrastructure
-   - **Government Contracts:** Specialized misinformation monitoring for public sector
+Targeted at journalists, traders, researchers, and YouTubers who need reliable truth verification in their workflows.
 
-3. **Premium Features**
-   - **Real-Time Alerts:** $99/month - Instant notifications for crisis misinformation
-   - **Custom Agent Training:** $999/setup - Domain-specific verification models
-   - **Historical Analytics:** $299/month - Temporal trend analysis and reporting
+#### Free Tier - Free
+- **Basic Text Chat**: Text-to-text conversations with AI agents for fact-checking
+- **Audio Transcription**: Convert voice notes/interviews to text (limited to 10 minutes/day)
+- **Limited Queries**: 10 verification queries per day
+- **Basic Features**: Standard fact-checking, simple claims verification
+- **Community Access**: Basic Chrome extension integration
 
-4. **Partnership Revenue**
-   - **News Organizations:** White-label verification tools
-   - **Social Media Platforms:** Integrated moderation APIs
-   - **Financial Institutions:** Market rumor monitoring services
+#### Pro Tier - ₹500/month
+- **All Features Unlocked**: Access to image verification, voice chat, crisis scanning
+- **3x Credits**: 150 verification queries per day
+- **Advanced Tools**: Bias assessment, confidence scoring, source analysis
+- **Priority Support**: Email support with 24-hour response
+- **Chrome Extension Pro**: Advanced browser integration with auto-scanning
+
+#### Pro Max Tier - ₹3,000/month
+- **Unlimited Access**: No query limits on all features
+- **Premium Voice**: Real-time voice conversations with agents
+- **Custom Integrations**: API access for workflow automation
+- **White-Label Options**: Branded verification tools for content creators
+- **Dedicated Support**: Phone/video support, custom training sessions
+
+### Company Intelligence Platform
+
+Custom enterprise solutions for organizations requiring comprehensive misinformation monitoring and corporate intelligence.
+
+#### Custom Pricing (Quote-Based)
+- **Dashboard Analytics**: Automated news fetching and verification for company monitoring
+- **Conversational Intelligence**: AI chatbot interface for understanding complex news data
+- **Temporal Analysis**: Historical trend tracking and predictive insights
+- **Multi-User Access**: Team collaboration with role-based permissions
+- **API Integration**: Full REST API access for custom applications
+- **White-Label Solutions**: Fully branded platform for enterprise deployment
+
+#### Enterprise Features
+- **Real-Time Alerts**: Instant notifications for brand-related misinformation
+- **Regulatory Compliance**: Audit trails and compliance reporting
+- **Custom Agent Training**: Domain-specific verification models
+- **Dedicated Infrastructure**: Private cloud deployment options
+- **SLA Guarantees**: 99.9% uptime with priority support
 
 ### Revenue Projections
-- **Year 1:** $2.5M (100 enterprise customers @ $25K avg)
-- **Year 2:** $15M (500 customers, API revenue)
-- **Year 3:** $50M+ (Market leader in AI verification)
+- **Year 1**: $1.2M (10,000 free users, 500 Pro subscribers, 20 enterprise clients)
+- **Year 2**: $8M (50,000 users, 2,000 Pro subscribers, 100 enterprises)
+- **Year 3**: $25M+ (200,000+ users, market leadership in AI verification)
 
 ### Go-to-Market Strategy
-- **Phase 1:** Free beta for journalists and researchers
-- **Phase 2:** Enterprise pilots with major news outlets
-- **Phase 3:** Mass market adoption via Chrome extension
+**Phase 1**: Free tier launch with Chrome extension for viral growth among content creators
+**Phase 2**: Pro tier targeting professional journalists and traders
+**Phase 3**: Enterprise expansion with custom company intelligence solutions
 
 ## 🌐 Chrome Extension
 
