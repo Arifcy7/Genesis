@@ -1,25 +1,10 @@
-# Veritas: Multi-Agent Truth Verification System
-
-<div align="center">
-  <img src="https://img.shields.io/badge/Agentic%20AI-Powered-blue?style=for-the-badge&logo=robot" alt="Agentic AI"/>
-  <img src="https://img.shields.io/badge/Misinformation-Detection-red?style=for-the-badge&logo=shield" alt="Misinformation Detection"/>
-  <img src="https://img.shields.io/badge/Google%20Gemini-2.5%20Flash-green?style=for-the-badge&logo=google" alt="Google Gemini"/>
-  <img src="https://img.shields.io/badge/Real--time-Scanning-orange?style=for-the-badge&logo=zap" alt="Real-time"/>
-</div>
-
-<div align="center">
-
-[![Veritas Demo Video](https://img.youtube.com/vi/UJ_e_pjYZy8/maxresdefault.jpg)](https://youtu.be/UJ_e_pjYZy8)
-
-**🎥 Watch the Complete Demo: [Veritas in Action](https://youtu.be/UJ_e_pjYZy8)**
-
-</div>
+# Genesis: Multi-Agent Truth Verification System
 
 ## 🌟 The World's Most Advanced Agentic AI for Truth Verification
 
-**Veritas** is not just another fact-checker—it's a revolutionary Multi-Agent Truth Verification System that deploys autonomous AI agents to combat misinformation at scale. Built for the MumbaiHacks 2025 Misinformation track, Veritas transforms how professionals verify information in real-time crises.
+**Genesis** is not just another fact-checker—it's a revolutionary Multi-Agent Truth Verification System that deploys autonomous AI agents to combat misinformation at scale. Built with cutting-edge technology, Genesis transforms how professionals verify information in real-time crises.
 
-> **"In a world drowning in information, Veritas is the lighthouse that cuts through the fog of misinformation."**
+> **"In a world drowning in information, Genesis is the lighthouse that cuts through the fog of misinformation."**
 
 ## 📋 Table of Contents
 
@@ -29,7 +14,7 @@
 - [🔄 How It Works: Agent Flows](#-how-it-works-agent-flows)
 - [🏢 Company Intelligence Dashboard](#-company-intelligence-dashboard)
 - [🛠️ Tech Stack](#️-tech-stack)
-- [⚡ Why Veritas is Superior](#-why-veritas-is-superior)
+- [⚡ Why Genesis is Superior](#-why-genesis-is-superior)
 - [💼 Business Model](#-business-model)
 - [🌐 Chrome Extension](#-chrome-extension)
 - [📦 Installation](#-installation)
@@ -39,15 +24,13 @@
 
 ## 🎯 Problem Statement
 
-**MumbaiHacks 2025 - Misinformation Track**
-
 Global crises like pandemics, geopolitical conflicts, or climate events generate a surge of online information, much of it confusing, conflicting, or deliberately false. This overload makes it difficult for citizens to know what to trust and how to act—leading to misinformation-driven harm.
 
-**Agentic AI Challenge:** Build an AI agent capable of scanning multiple content streams and detecting emerging misinformation trends related to global or local crises. The agent should verify claims using cross-references and produce accessible, contextual explanations or corrections for diverse audiences.
+**Challenge:** Build an AI agent capable of scanning multiple content streams and detecting emerging misinformation trends related to global or local crises. The agent should verify claims using cross-references and produce accessible, contextual explanations or corrections for diverse audiences.
 
-## 📋 Solution Summary: Veritas Multi-Agent Truth Verification System
+## 📋 Solution Summary: Genesis Multi-Agent Truth Verification System
 
-**Veritas** is a revolutionary Multi-Agent Truth Verification System deploying 7 autonomous AI agents for real-time misinformation combat. Unlike reactive fact-checkers, Veritas operates proactively through swarm intelligence, processing text, voice, images, and data streams simultaneously.
+**Genesis** is a revolutionary Multi-Agent Truth Verification System deploying autonomous AI agents for real-time misinformation combat. Unlike reactive fact-checkers, Genesis operates proactively through swarm intelligence, processing text, voice, images, and data streams simultaneously.
 
 **Core Architecture** features specialized agents: Main Orchestrator for intelligent routing, Check Agent for multi-source verification with 0.0-1.0 confidence scoring, Image Agent for visual content analysis, Synthesis Agent for professional responses, Transcriber for audio processing, and Voice Agent for conversational verification. Corporate Intelligence includes Web Discovery, News Aggregation, and Cross-Reference agents, plus Conversational Analytics for natural language data queries.
 
@@ -57,23 +40,45 @@ Global crises like pandemics, geopolitical conflicts, or climate events generate
 
 **User Ecosystem** includes a responsive Next.js web platform, Chrome extension for browser integration, and API-first design for enterprise scalability. The dual-sided business model offers user subscriptions (Free/Pro/Pro Max) and custom enterprise intelligence solutions.
 
-**Market Impact** delivers sub-second verification, crisis-scale processing, and professional-grade accuracy. Veritas prevents misinformation harm through autonomous systems, directly addressing MumbaiHacks requirements with agentic AI, crisis specialization, and diverse audience accessibility.
+**Market Impact** delivers sub-second verification, crisis-scale processing, and professional-grade accuracy. Genesis prevents misinformation harm through autonomous systems with agentic AI, crisis specialization, and diverse audience accessibility.
 
 ## 🚀 Key Features
 
-- **🤖 Multi-Agent Architecture**: 4 specialized AI agents working in harmony
-- **🔍 Real-Time Crisis Scanning**: Proactive detection of misinformation trends
-- **📊 Corporate Intelligence Engine**: Dedicated analysis for companies and investors
-- **🖼️ Visual Claim Verification**: Extract and verify claims from images and screenshots
-- **🎤 Voice-Enabled Interactions**: Real-time fact-checking via voice conversations
-- **📈 Temporal Graph Analytics**: Track misinformation patterns over time
-- **🌐 Chrome Integration**: Seamless browser-based verification
-- **💬 Conversational AI**: Chat with verified news data using natural language
+### Core Verification System
+- **🤖 Multi-Agent Architecture**: Specialized AI agents working in harmony for comprehensive fact-checking
+- **🔍 Real-Time Crisis Scanning**: Proactive detection of misinformation trends during global events
+- **🖼️ Visual Claim Verification**: Extract and verify claims from images and screenshots using OCR
+- **🎤 Voice-Enabled Interactions**: Real-time fact-checking via voice conversations with WebRTC
+- **📈 Temporal Graph Analytics**: Track misinformation patterns over time with historical data
+- **💬 Conversational AI**: Chat with verified news data using natural language queries
+- **🌐 Chrome Extension**: Seamless browser-based verification with right-click integration
 - **📱 Cross-Platform**: Web app, API, and browser extension support
+
+### Company Intelligence Dashboard
+- **📊 Corporate News Monitoring**: Automated news fetching and verification for registered companies
+- **🎯 Reliability Score**: Real-time calculation based on verified vs. fake news ratios
+- **📉 Sentiment Analysis**: Positive, negative, and neutral news breakdown with visualizations
+- **📅 Timeline Tracking**: 7-day trend graphs showing sentiment and reliability changes
+- **🔄 Multi-Source Aggregation**: Collect news from financial, product, legal, and partnership categories
+- **💼 Company Profile Management**: Secure registration with industry-specific analysis
+- **📊 Interactive Analytics**: Pie charts, bar graphs, and temporal trend visualizations
+- **🔔 Past Reports**: Access historical analysis reports with timestamp-based filtering
+- **⚡ Real-Time Updates**: Live fetching of latest news with automated verification
+- **🎨 Professional Dashboard**: Modern UI with crisis alerts and comprehensive statistics
+
+### User Features
+- **👤 User Authentication**: Secure login/registration for individual users
+- **💬 AI Chat Interface**: Interactive conversations with fact-checking agents
+- **📸 Image Upload**: Verify screenshots and visual content for misinformation
+- **🎙️ Audio Transcription**: Convert voice notes and interviews to verified text
+- **📊 Query History**: Track past verification requests and results
+- **🔐 Secure Sessions**: JWT-based authentication with encrypted data
+- **📱 Responsive Design**: Optimized for desktop, tablet, and mobile devices
+- **⚡ Fast Performance**: Sub-second response times for most queries
 
 ## 💼 Business Model
 
-Veritas offers a dual-sided marketplace: **User Subscriptions** for individual professionals and **Company Intelligence** for organizations. Our platform monetizes through tiered access to our agentic AI capabilities, balancing accessibility with premium features.
+Genesis offers a dual-sided marketplace: **User Subscriptions** for individual professionals and **Company Intelligence** for organizations. Our platform monetizes through tiered access to our agentic AI capabilities, balancing accessibility with premium features.
 
 ### Individual User Subscriptions
 
@@ -142,9 +147,9 @@ Custom enterprise solutions for organizations requiring comprehensive misinforma
 - **Deployment:** Docker containers with auto-scaling
 - **Security:** JWT authentication, API rate limiting, data encryption
 
-## ⚡ Why Veritas is Superior: Feature Comparison
+## ⚡ Why Genesis is Superior: Feature Comparison
 
-| Feature | Veritas | Perplexity AI | ChatGPT | The Quint | Google Fact Check Tools |
+| Feature | Genesis | Perplexity AI | ChatGPT | The Quint | Google Fact Check Tools |
 |---------|---------|---------------|---------|-----------|-------------------------|
 | **Agentic AI** | ✅ Multi-agent orchestration with A2A protocols | ❌ Single model responses | ❌ No autonomous agents | ❌ Manual fact-checking only | ❌ Tools for publishers, no AI agents |
 | **Real-Time Scanning** | ✅ Proactive crisis trend detection | ❌ Static search results | ❌ No real-time capabilities | ❌ Manual article-based checking | ❌ No real-time scanning |
@@ -158,29 +163,33 @@ Custom enterprise solutions for organizations requiring comprehensive misinforma
 | **Chrome Extension** | ✅ Browser-integrated verification | ❌ No extension | ❌ No extension | ❌ No extension | ❌ No extension |
 | **Business Model** | ✅ Dual-sided marketplace (users + enterprise) | ✅ Subscription model | ❌ No monetization tools | ❌ Ad-supported, no subscriptions | ❌ Free tools, no monetization |
 
-**Verdict:** Veritas combines the best of search engines, AI chatbots, and specialized verification tools into one autonomous system. While Perplexity excels at search and ChatGPT at conversation, only Veritas deploys multiple agents working together for comprehensive truth verification. The Quint and Google tools are valuable but limited to manual processes and publisher tools respectively.
+**Verdict:** Genesis combines the best of search engines, AI chatbots, and specialized verification tools into one autonomous system. While Perplexity excels at search and ChatGPT at conversation, only Genesis deploys multiple agents working together for comprehensive truth verification. The Quint and Google tools are valuable but limited to manual processes and publisher tools respectively.
+
+## 💡 Pain Points & Solutions
+
+### For Traders & Investors
 **Pain Point:** Traders risk massive financial losses by acting on viral market rumors, fake earnings reports, or manipulated stock news that can crash portfolios in minutes.
 
-**Veritas Solution:** Our Corporate Intelligence Engine provides real-time news verification with a Reliability Score, sentiment analysis, and temporal tracking. Traders get a "market truth dashboard" showing verified vs. fake news ratios, preventing costly decisions based on misinformation.
+**Genesis Solution:** Our Corporate Intelligence Engine provides real-time news verification with a Reliability Score, sentiment analysis, and temporal tracking. Traders get a "market truth dashboard" showing verified vs. fake news ratios, preventing costly decisions based on misinformation.
 
 ### For Journalists & Newsrooms
 **Pain Point:** Journalists face intense deadline pressure to publish accurate stories, but verifying claims across multiple sources takes hours, risking the spread of unverified information.
 
-**Veritas Solution:** The Main Agent routes queries instantly to specialized verifiers. Journalists can upload audio interviews for transcription and fact-checking, or scan crisis trends proactively. Our synthesis agent creates professional, sourced responses in seconds.
+**Genesis Solution:** The Main Agent routes queries instantly to specialized verifiers. Journalists can upload audio interviews for transcription and fact-checking, or scan crisis trends proactively. Our synthesis agent creates professional, sourced responses in seconds.
 
 ### For YouTubers & Content Creators
 **Pain Point:** Content creators risk platform strikes, demonetization, or legal issues from sharing unverified claims, manipulated images, or trending but false narratives in their videos.
 
-**Veritas Solution:** Visual claim extraction from screenshots prevents sharing fake tweet graphics. The Chrome extension allows right-click verification of scripts or articles. Voice mode enables real-time brainstorming with built-in fact-checking.
+**Genesis Solution:** Visual claim extraction from screenshots prevents sharing fake tweet graphics. The Chrome extension allows right-click verification of scripts or articles. Voice mode enables real-time brainstorming with built-in fact-checking.
 
 ### For Researchers & Academics
 **Pain Point:** Researchers need deep, structured analysis with citations, not just "True/False" labels. Generic tools lack the depth and source grounding required for academic work.
 
-**Veritas Solution:** Confidence scoring (0.0-1.0), bias assessment, and comprehensive source grounding provide academic-grade verification. The synthesis agent structures findings into professional reports with evidence paragraphs.
+**Genesis Solution:** Confidence scoring (0.0-1.0), bias assessment, and comprehensive source grounding provide academic-grade verification. The synthesis agent structures findings into professional reports with evidence paragraphs.
 
 ## 🔄 How It Works: Complete Agent Flows & Explanations
 
-Veritas employs a sophisticated agent orchestration system, inspired by real A2A (Agent-to-Agent) communication protocols. Here's the complete breakdown of how our 4 specialized agents collaborate across all use cases:
+Genesis employs a sophisticated agent orchestration system, inspired by real A2A (Agent-to-Agent) communication protocols. Here's the complete breakdown of how our specialized agents collaborate across all use cases:
 
 ### 1. Main Agent → Check Agent Flow (Core Fact-Checking Pipeline)
 ```
@@ -321,7 +330,7 @@ Companies can chat with their news data: "Show me all negative news from last we
 **Seamless Browser Integration for Content Creators**
 
 ### Features
-- **Right-Click Verification:** Highlight text, right-click "Verify with Veritas"
+- **Right-Click Verification:** Highlight text, right-click "Verify with Genesis"
 - **Auto-Scan Articles:** Automatically check news pages for misinformation
 - **Image Verification:** Upload screenshots directly from browser
 - **Real-Time Alerts:** Notifications for trending false claims
@@ -426,9 +435,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ---
 
 <div align="center">
-  <p><strong>Built with ❤️ for MumbaiHacks 2025</strong></p>
+  <p><strong>Built with ❤️ by the Genesis Team</strong></p>
   <p>Transforming misinformation combat through autonomous AI agents</p>
   <p>
-    <a href="#veritas-multi-agent-truth-operating-system">Back to Top</a>
+    <a href="#genesis-multi-agent-truth-verification-system">Back to Top</a>
   </p>
 </div>
