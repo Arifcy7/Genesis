@@ -19,6 +19,7 @@ export async function GET(request) {
         id: company._id,
         name: company.name,
         email: company.email,
+        officialWebsite: company.officialWebsite,
         profilePicture: company.profilePicture,
         createdAt: company.createdAt,
         lastLogin: company.lastLogin
@@ -41,3 +42,4 @@ export async function POST() {
     { status: 405 }
   );
 }
+  

@@ -48,7 +48,7 @@ export default function Contact() {
           </h1>
 
           <p className="text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
-            Have questions about our AI-powered fact-checking system? We'd love to hear from you and help you get started with Veritas.
+            Have questions about our AI-powered fact-checking system? We'd love to hear from you and help you get started with Genesis.
           </p>
         </div>
       </section>
@@ -85,7 +85,7 @@ export default function Contact() {
                     </div>
                     <div>
                         <p className="text-xs text-gray-400 mb-1">Email us at</p>
-                        <a href="mailto:support@veritas.com" className="text-sm text-white font-medium hover:text-[#7C3AED] transition-colors">support@veritas.com</a>
+                        <a href="mailto:support@genesis.com" className="text-sm text-white font-medium hover:text-[#7C3AED] transition-colors">support@genesis.com</a>
                     </div>
                  </div>
 

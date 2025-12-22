@@ -12,7 +12,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Veritas - Truth Through Technology",
+  title: "Genesis - Truth Through Technology",
   description: "AI-powered truth verification and misinformation detection platform",
 };
 

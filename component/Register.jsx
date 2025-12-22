@@ -137,7 +137,7 @@ export default function Register() {
         {/* Adjusted positioning to be on the right side logic contextually, but physically top-left of this container */}
         <div className="flex-none lg:absolute lg:top-8 lg:right-16">
             <div className="flex items-center gap-2 flex-row-reverse lg:flex-row">
-                <span className="text-lg font-bold tracking-tight">Veritas</span>
+                <span className="text-lg font-bold tracking-tight">Genesis</span>
                 <div className="w-7 h-7 rounded-lg bg-[#7C3AED] flex items-center justify-center shadow-[0_0_15px_#7C3AED]">
                     <Zap size={16} fill="white" className="text-white" />
                 </div>

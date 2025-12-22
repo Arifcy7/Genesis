@@ -81,7 +81,7 @@ const QuoteCard = () => (
              <Quote size={48} className="text-white fill-white hidden sm:block" />
         </div>
         <p className="text-white text-lg sm:text-xl font-medium leading-relaxed italic tracking-wide">
-        "Veritas has completely transformed how we verify information. The real-time fact-checking is an essential tool for modern journalism."
+        "Genesis has completely transformed how we verify information. The real-time fact-checking is an essential tool for modern journalism."
         </p>
         <div className="mt-4 sm:mt-6 pt-4 sm:pt-6 border-t border-white/20 w-full flex justify-center">
             <span className="text-white/80 text-xs sm:text-sm font-semibold uppercase tracking-wider">Editor-in-Chief, Global News</span>
@@ -119,12 +119,12 @@ const TestimonialSection = () => {
           </div>
 
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-[56px] font-semibold leading-[1.2] tracking-tight mb-4 sm:mb-6 text-white px-2 sm:px-0">
-            1,000+ Users Trust Veritas<br/>
+            1,000+ Users Trust Genesis<br/>
             <span className="text-white/30">Join the Fight Against Misinformation</span>
           </h2>
 
           <p className="text-gray-400 text-base sm:text-lg md:text-xl max-w-2xl mx-auto leading-relaxed mb-8 sm:mb-10 px-2 sm:px-0">
-            See how journalists, researchers, and everyday users leverage Veritas to verify truth in real-time.
+            See how journalists, researchers, and everyday users leverage Genesis to verify truth in real-time.
           </p>
 
         </div>
@@ -144,14 +144,14 @@ const TestimonialSection = () => {
             <ReviewCard 
               logo="V"
               stars={true}
-              text="As a journalist, Veritas is my secret weapon. The Chrome extension works seamlessly while I browse, instantly flagging suspicious claims."
+              text="As a journalist, Genesis is my secret weapon. The Chrome extension works seamlessly while I browse, instantly flagging suspicious claims."
             />
 
             <ReviewCard 
               avatar="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80"
               name="David Martinez"
               role="Senior Editor"
-              text="The AI-powered analysis is incredibly accurate. Veritas cross-references multiple sources instantly, something that would take our team hours to do manually."
+              text="The AI-powered analysis is incredibly accurate. Genesis cross-references multiple sources instantly, something that would take our team hours to do manually."
             />
           </div>
 
@@ -161,7 +161,7 @@ const TestimonialSection = () => {
               avatar="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80"
               name="Sarah Chen"
               role="Research Analyst"
-              text="Veritas has become essential for my research work. The detailed reports with source citations make it easy to verify claims."
+              text="Genesis has become essential for my research work. The detailed reports with source citations make it easy to verify claims."
             />
 
             <QuoteCard />
@@ -180,7 +180,7 @@ const TestimonialSection = () => {
             <ReviewCard 
               logo="T"
               stars={true}
-              text="What impressed me most is the real-time detection. During election coverage, Veritas helped us fact-check statements live. The speed is unmatched."
+              text="What impressed me most is the real-time detection. During election coverage, Genesis helped us fact-check statements live. The speed is unmatched."
             />
 
             <VideoCard 
@@ -194,7 +194,7 @@ const TestimonialSection = () => {
               avatar="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80"
               name="Michael Thompson"
               role="Content Creator"
-              text="As someone who creates educational content, Veritas gives me confidence that I'm sharing accurate information. A game-changer."
+              text="As someone who creates educational content, Genesis gives me confidence that I'm sharing accurate information. A game-changer."
             />
           </div>
 

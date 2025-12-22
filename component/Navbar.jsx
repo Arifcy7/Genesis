@@ -106,7 +106,7 @@ const Navbar = () => {
             <Hexagon size={16} fill="white" className="rotate-90 sm:hidden" />
             <Hexagon size={18} fill="white" className="rotate-90 hidden sm:block" />
           </div>
-          <span className="text-lg sm:text-xl font-medium tracking-tight text-white">Veritas</span>
+          <span className="text-lg sm:text-xl font-medium tracking-tight text-white">Genesis</span>
         </div>
 
         {/* Desktop Links */}

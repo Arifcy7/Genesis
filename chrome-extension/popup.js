@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
       const results = await chrome.scripting.executeScript({
         target: { tabId: tab.id },
         function: () => {
-          return window.pageTextForVeritas || document.body.innerText;
+          return window.pageTextForGenesis || document.body.innerText;
         }
       });
       
@@ -203,7 +203,7 @@ function extractPageText() {
     .trim();
     
   // Store in window for retrieval
-  window.pageTextForVeritas = cleanText;
+  window.pageTextForGenesis = cleanText;
   
   return cleanText;
 }

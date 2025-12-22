@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import CompanyNavbar from '@/component/CompanyNavbar';
-import { Building2, Mail, Calendar, Upload, Save, Loader2 } from 'lucide-react';
+import { Building2, Mail, Calendar, Upload, Save, Loader2, Chrome } from 'lucide-react';
 
 export default function CompanyProfilePage() {
   const [company, setCompany] = useState(null);
@@ -12,7 +12,8 @@ export default function CompanyProfilePage() {
   const [message, setMessage] = useState({ type: '', text: '' });
   const [formData, setFormData] = useState({
     name: '',
-    email: ''
+    email: '',
+    officialWebsite: ''
   });
   const router = useRouter();
 
@@ -32,7 +33,8 @@ export default function CompanyProfilePage() {
         setCompany(data.company);
         setFormData({
           name: data.company.name,
-          email: data.company.email
+          email: data.company.email,
+          officialWebsite: data.company.officialWebsite || ''
         });
       } else {
         router.push('/company-login');
@@ -217,6 +219,24 @@ export default function CompanyProfilePage() {
                     name="email"
                     value={formData.email}
                     onChange={handleInputChange}
+                    className="w-full bg-[#1a1a1a] border border-white/10 rounded-lg pl-10 pr-4 py-3 text-white focus:outline-none focus:border-purple-500/50 focus:ring-1 focus:ring-purple-500/50 transition-all"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-300 mb-2">
+                  Official Website
+                </label>
+                <div className="relative">
+                  <Chrome className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" size={18} />
+                  <input
+                    type="url"
+                    name="officialWebsite"
+                    value={formData.officialWebsite}
+                    onChange={handleInputChange}
+                    placeholder="https://www.company.com"
                     className="w-full bg-[#1a1a1a] border border-white/10 rounded-lg pl-10 pr-4 py-3 text-white focus:outline-none focus:border-purple-500/50 focus:ring-1 focus:ring-purple-500/50 transition-all"
                     required
                   />

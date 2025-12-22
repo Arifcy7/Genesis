@@ -16,18 +16,28 @@ export async function POST(request) {
     }
 
     await connectDB();
-    const { name, email, password } = await request.json();
+    const { name, email, password, officialWebsite } = await request.json();
 
     // Input validation
-    if (!name?.trim() || !email?.trim() || !password) {
+    if (!name?.trim() || !email?.trim() || !password || !officialWebsite?.trim()) {
       return NextResponse.json(
-        { error: 'Please provide company name, email, and password' },
+        { error: 'Please provide company name, email, password, and official website' },
         { status: 400 }
       );
     }
 
     const trimmedName = name.trim();
     const trimmedEmail = email.toLowerCase().trim();
+    const trimmedWebsite = officialWebsite.trim();
+
+    // Validate website URL format
+    const urlRegex = /^https?:\/\/.+\..+/;
+    if (!urlRegex.test(trimmedWebsite)) {
+      return NextResponse.json(
+        { error: 'Please provide a valid website URL (e.g., https://example.com)' },
+        { status: 400 }
+      );
+    }
 
     if (password.length < 6) {
       return NextResponse.json(
@@ -49,7 +59,8 @@ export async function POST(request) {
     const company = await Company.create({
       name: trimmedName,
       email: trimmedEmail,
-      password: password // Let the pre-save hook handle hashing
+      password: password, // Let the pre-save hook handle hashing
+      officialWebsite: trimmedWebsite
     });
 
     return NextResponse.json({
@@ -58,7 +69,8 @@ export async function POST(request) {
       company: {
         id: company._id,
         name: company.name,
-        email: company.email
+        email: company.email,
+        officialWebsite: company.officialWebsite
       }
     }, { status: 201 });
 

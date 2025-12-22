@@ -1,4 +1,4 @@
-// background.js - Veritas Orchestrator
+// background.js - Genesis Orchestrator
 
 // POINT TO YOUR FASTAPI BACKEND
 const API_BASE = 'http://localhost:8000/api';
@@ -6,15 +6,15 @@ const API_BASE = 'http://localhost:8000/api';
 // Initialize Context Menus
 chrome.runtime.onInstalled.addListener(() => {
   chrome.contextMenus.create({
-    id: 'veritas-check',
-    title: 'Verify with Veritas Agent',
+    id: 'genesis-check',
+    title: 'Verify with Genesis Agent',
     contexts: ['selection']
   });
 });
 
 // Handle Context Menu (Selection Mode)
 chrome.contextMenus.onClicked.addListener(async (info, tab) => {
-  if (info.menuItemId === 'veritas-check' && info.selectionText) {
+  if (info.menuItemId === 'genesis-check' && info.selectionText) {
     try {
       // Ensure content script is injected
       await ensureContentScriptInjected(tab.id);

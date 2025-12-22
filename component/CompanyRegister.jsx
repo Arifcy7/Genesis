@@ -8,7 +8,8 @@ export default function CompanyRegister() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    password: ''
+    password: '',
+    officialWebsite: ''
   });
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
@@ -137,7 +138,7 @@ export default function CompanyRegister() {
         {/* 1. Header/Logo */}
         <div className="flex-none lg:absolute lg:top-8 lg:right-16">
             <div className="flex items-center gap-2 flex-row-reverse lg:flex-row">
-                <span className="text-lg font-bold tracking-tight">Veritas Business</span>
+                <span className="text-lg font-bold tracking-tight">Genesis Business</span>
                 <div className="w-7 h-7 rounded-lg bg-[#7C3AED] flex items-center justify-center shadow-[0_0_15px_#7C3AED]">
                     <Building2 size={16} className="text-white" />
                 </div>
@@ -209,6 +210,24 @@ export default function CompanyRegister() {
                             name="email"
                             placeholder="admin@company.com"
                             value={formData.email}
+                            onChange={handleChange}
+                            required
+                            className="w-full bg-[#151515] border border-white/10 rounded-lg pl-10 pr-4 py-2.5 text-sm text-white placeholder:text-gray-600 focus:outline-none focus:border-[#7C3AED]/50 focus:ring-1 focus:ring-[#7C3AED]/50 transition-all"
+                            />
+                        </div>
+                    </div>
+
+                    <div className="space-y-1.5">
+                        <label className="text-xs font-medium text-gray-300 ml-1">Official Website</label>
+                        <div className="relative">
+                            <div className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-500">
+                                <Chrome size={16} />
+                            </div>
+                            <input
+                            type="url"
+                            name="officialWebsite"
+                            placeholder="https://www.company.com"
+                            value={formData.officialWebsite}
                             onChange={handleChange}
                             required
                             className="w-full bg-[#151515] border border-white/10 rounded-lg pl-10 pr-4 py-2.5 text-sm text-white placeholder:text-gray-600 focus:outline-none focus:border-[#7C3AED]/50 focus:ring-1 focus:ring-[#7C3AED]/50 transition-all"

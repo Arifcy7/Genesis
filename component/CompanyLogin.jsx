@@ -94,7 +94,7 @@ export default function CompanyLogin() {
                 <div className="w-7 h-7 rounded-lg bg-[#7C3AED] flex items-center justify-center shadow-[0_0_15px_#7C3AED]">
                     <Building2 size={16} className="text-white" />
                 </div>
-                <span className="text-lg font-bold tracking-tight">Veritas Business</span>
+                <span className="text-lg font-bold tracking-tight">Genesis Business</span>
             </div>
         </div>
 

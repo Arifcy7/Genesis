@@ -1,5 +1,5 @@
-// content.js - Veritas UI
-console.log('Veritas content script loaded');
+// content.js - Genesis UI
+console.log('Genesis content script loaded');
 
 // 1. LISTENERS
 chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
@@ -25,10 +25,10 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
 
 // 2. UI BUILDER
 function createWidget() {
-  let w = document.getElementById('veritas-widget');
+  let w = document.getElementById('genesis-widget');
   if (!w) {
     w = document.createElement('div');
-    w.id = 'veritas-widget';
+    w.id = 'genesis-widget';
     w.style.cssText = `
       position: fixed; top: 20px; right: 20px; width: 380px; max-width: 90vw;
       background: #0f172a; color: white; z-index: 2147483647;
@@ -48,7 +48,7 @@ function showLoading(text) {
   w.innerHTML = `
     <div style="padding: 20px; text-align: center;">
       <div style="font-size: 24px; animation: spin 1s linear infinite;">⚙️</div>
-      <h3 style="margin: 10px 0 5px; color: #10b981; font-size: 16px;">Veritas Agent</h3>
+      <h3 style="margin: 10px 0 5px; color: #10b981; font-size: 16px;">Genesis Agent</h3>
       <p style="margin: 0; color: #94a3b8; font-size: 12px;">${text}</p>
     </div>
     <style>@keyframes spin { 100% { transform: rotate(360deg); } }</style>
@@ -240,7 +240,7 @@ function createCaptureOverlay() {
 
   // Create overlay
   captureOverlay = document.createElement('div');
-  captureOverlay.id = 'veritas-capture-overlay';
+  captureOverlay.id = 'genesis-capture-overlay';
   captureOverlay.style.cssText = `
     position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
     background: rgba(0, 0, 0, 0.3); z-index: 2147483647;
@@ -249,7 +249,7 @@ function createCaptureOverlay() {
 
   // Create selection box
   const selectionBox = document.createElement('div');
-  selectionBox.id = 'veritas-selection-box';
+  selectionBox.id = 'genesis-selection-box';
   selectionBox.style.cssText = `
     position: absolute; border: 2px dashed #10b981;
     background: rgba(16, 185, 129, 0.1); display: none;
@@ -258,7 +258,7 @@ function createCaptureOverlay() {
 
   // Create done button
   const doneButton = document.createElement('button');
-  doneButton.id = 'veritas-done-btn';
+  doneButton.id = 'genesis-done-btn';
   doneButton.textContent = 'Done';
   doneButton.style.cssText = `
     position: fixed; top: 20px; right: 20px; z-index: 2147483648;
@@ -319,7 +319,7 @@ function createCaptureOverlay() {
     }
     if (e.key === 'Enter') {
       console.log('Enter pressed, capturing selected area');
-      const doneButton = document.getElementById('veritas-done-btn');
+      const doneButton = document.getElementById('genesis-done-btn');
       if (doneButton && doneButton.style.display !== 'none') {
         capturSelectedArea();
       }
@@ -347,7 +347,7 @@ function showCaptureInstructions() {
 function capturSelectedArea() {
   console.log('capturSelectedArea called');
 
-  const selectionBox = document.getElementById('veritas-selection-box');
+  const selectionBox = document.getElementById('genesis-selection-box');
   if (!selectionBox) {
     console.log('No selection box found');
     return;
@@ -413,12 +413,12 @@ function cancelCapture() {
     captureOverlay = null;
   }
 
-  const doneButton = document.getElementById('veritas-done-btn');
+  const doneButton = document.getElementById('genesis-done-btn');
   if (doneButton) {
     doneButton.remove();
   }
 
-  const widget = document.getElementById('veritas-widget');
+  const widget = document.getElementById('genesis-widget');
   if (widget) {
     widget.remove();
   }

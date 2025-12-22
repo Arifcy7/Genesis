@@ -37,11 +37,11 @@ export default function Comparison() {
           </div>
 
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-[56px] font-semibold leading-[1.2] tracking-tight mb-4 sm:mb-6 text-white px-2 sm:px-0">
-            Veritas vs. Traditional Methods<span className="text-white/30">—See the Difference</span>
+            Genesis vs. Traditional Methods<span className="text-white/30">—See the Difference</span>
           </h2>
 
           <p className="text-gray-400 text-base sm:text-lg md:text-xl max-w-2xl mx-auto mb-6 sm:mb-8 leading-relaxed px-2 sm:px-0">
-            Stop relying on manual fact-checking and outdated methods. Veritas brings AI-powered truth verification to your fingertips.
+            Stop relying on manual fact-checking and outdated methods. Genesis brings AI-powered truth verification to your fingertips.
           </p>
 
           {/* Divider Dot */}

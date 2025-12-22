@@ -9,7 +9,7 @@ export default function Pricing() {
       price: "0",
       icon: <Rocket size={20} className="text-white" />,
       badge: "Get Started",
-      desc: "Perfect for individuals trying out Veritas.",
+      desc: "Perfect for individuals trying out Genesis.",
       limits: ["10 Checks/Day", "Basic Analysis"],
       features: [
         "Real-time fact checking",

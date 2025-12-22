@@ -29,9 +29,10 @@ export async function GET(request) {
         return NextResponse.json({
           success: true,
           company: {
-            id: company._id,
+            id: company._id.toString(),
             name: company.name,
             email: company.email,
+            officialWebsite: company.officialWebsite,
             profilePicture: company.profilePicture,
             createdAt: company.createdAt,
             lastLogin: company.lastLogin
@@ -45,9 +46,10 @@ export async function GET(request) {
         return NextResponse.json({
           success: true,
           company: {
-            id: company._id,
+            id: company._id.toString(),
             name: company.name,
             email: company.email,
+            officialWebsite: company.officialWebsite,
             profilePicture: company.profilePicture,
             createdAt: company.createdAt,
             lastLogin: company.lastLogin
@@ -65,9 +67,10 @@ export async function GET(request) {
       return NextResponse.json({
         success: true,
         company: {
-          id: company._id,
+          id: company._id.toString(),
           name: company.name,
           email: company.email,
+          officialWebsite: company.officialWebsite,
           profilePicture: company.profilePicture,
           createdAt: company.createdAt,
           lastLogin: company.lastLogin

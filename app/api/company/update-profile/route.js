@@ -16,7 +16,7 @@ export async function PUT(request) {
     const { company } = authResult;
     await connectDB();
 
-    const { name, email } = await request.json();
+    const { name, email, officialWebsite } = await request.json();
 
     // Input validation
     if (!name?.trim()) {
@@ -33,11 +33,27 @@ export async function PUT(request) {
       );
     }
 
+    if (!officialWebsite?.trim()) {
+      return NextResponse.json(
+        { error: 'Official website is required' },
+        { status: 400 }
+      );
+    }
+
     // Email format validation
     const emailRegex = /^\S+@\S+\.\S+$/;
     if (!emailRegex.test(email.trim())) {
       return NextResponse.json(
         { error: 'Please provide a valid email address' },
+        { status: 400 }
+      );
+    }
+
+    // Website URL validation
+    const urlRegex = /^https?:\/\/.+\..+/;
+    if (!urlRegex.test(officialWebsite.trim())) {
+      return NextResponse.json(
+        { error: 'Please provide a valid website URL (e.g., https://example.com)' },
         { status: 400 }
       );
     }
@@ -63,6 +79,7 @@ export async function PUT(request) {
       {
         name: name.trim(),
         email: email.toLowerCase().trim(),
+        officialWebsite: officialWebsite.trim(),
         updatedAt: new Date()
       },
       { new: true, select: '-password' }
@@ -75,6 +92,7 @@ export async function PUT(request) {
         id: updatedCompany._id,
         name: updatedCompany.name,
         email: updatedCompany.email,
+        officialWebsite: updatedCompany.officialWebsite,
         profilePicture: updatedCompany.profilePicture,
         createdAt: updatedCompany.createdAt,
         lastLogin: updatedCompany.lastLogin

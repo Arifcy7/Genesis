@@ -1,4 +1,4 @@
-# Veritas Chrome Extension
+# Genesis Chrome Extension
 
 ## Installation
 
@@ -11,13 +11,13 @@
 ## Usage
 
 ### Method 1: Page Scan
-- Click the Veritas extension icon
+- Click the Genesis extension icon
 - Click "Scan This Page"
 - View results overlay on the page
 
 ### Method 2: Text Selection  
 - Highlight any text on a webpage
-- Right-click and select "Verify with Veritas Agent"
+- Right-click and select "Verify with Genesis Agent"
 - View verification results in overlay
 
 ## Features
@@ -28,7 +28,7 @@
 - 🚀 Uses your existing FastAPI backend
 
 ## Backend Connection
-The extension connects to your existing Veritas backend at `http://localhost:8000` and uses the same agents:
+The extension connects to your existing Genesis backend at `http://localhost:8000` and uses the same agents:
 - Check Agent (`/api/check-agent`)
 - Synthesis Agent (`/api/synthesis`)
 

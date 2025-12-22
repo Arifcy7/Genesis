@@ -24,6 +24,12 @@ const companySchema = new mongoose.Schema({
     minlength: [6, 'Password must be at least 6 characters long'],
     select: false 
   },
+  officialWebsite: {
+    type: String,
+    required: [true, 'Official website is required'],
+    trim: true,
+    match: [/^https?:\/\/.+\..+/, 'Please provide a valid website URL (e.g., https://example.com)']
+  },
   profilePicture: {
     type: String,
     default: null

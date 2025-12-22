@@ -102,7 +102,7 @@ export default function Hero() {
                  <div className="flex-1 flex justify-center">
                     <div className="bg-[#1A1A1A] border border-white/5 rounded-md px-2 sm:px-3 py-0.5 sm:py-1 text-[10px] sm:text-xs text-gray-500 flex items-center gap-1 sm:gap-2 w-32 sm:w-48 md:w-64 justify-center">
                        <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-green-500 rounded-full"></span>
-                       veritas.com
+                       genesis.com
                     </div>
                  </div>
                  <div className="w-8 sm:w-16"></div>
@@ -115,7 +115,7 @@ export default function Hero() {
                  <div className="hidden md:flex w-48 lg:w-64 border-r border-white/5 flex-col bg-[#0D0D0D] p-3 lg:p-4 gap-4 lg:gap-6">
                     <div className="flex items-center gap-2 text-white/80 font-semibold text-xs lg:text-sm mb-2">
                        <div className="w-5 h-5 lg:w-6 lg:h-6 bg-purple-500 rounded flex items-center justify-center text-white text-[10px] lg:text-xs font-bold">V</div>
-                       Veritas
+                       Genesis
                     </div>
 
                     <div className="space-y-1">
@@ -154,7 +154,7 @@ export default function Hero() {
                            Real-time AI Verification
                         </div>
                         <h2 className="text-lg sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-white mb-4 sm:mb-6 leading-tight">
-                           Advanced Misinformation Detection powered by <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">Veritas AI</span>
+                           Advanced Misinformation Detection powered by <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">Genesis AI</span>
                         </h2>
 
                         {/* App Icons Grid */}

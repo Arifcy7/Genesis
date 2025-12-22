@@ -106,7 +106,7 @@ const CompanyNavbar = () => {
             <Building2 size={16} className="rotate-0 sm:hidden" />
             <Building2 size={18} className="rotate-0 hidden sm:block" />
           </div>
-          <span className="text-lg sm:text-xl font-medium tracking-tight text-white">Veritas Business</span>
+          <span className="text-lg sm:text-xl font-medium tracking-tight text-white">Genesis Business</span>
         </div>
 
         {/* Desktop Links */}

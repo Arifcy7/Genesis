@@ -13,7 +13,12 @@ export async function POST(request) {
 
     const { company, companyId } = authResult;
 
-    // Call Python backend to trigger news analysis
+    // Parse user-provided analysis options
+    const body = await request.json().catch(() => ({}));
+    const analysisPeriod = body?.analysisPeriod || 'today';
+    const competitors = Array.isArray(body?.competitors) ? body.competitors : undefined;
+
+    // Call Python backend to trigger news analysis with options
     try {
       const backendUrl = process.env.BACKEND_URL || 'http://localhost:8002';
       const response = await fetch(`${backendUrl}/api/company/fetch-news`, {
@@ -22,7 +27,9 @@ export async function POST(request) {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          companyId: companyId
+          companyId: companyId,
+          analysisPeriod,
+          competitors
         })
       });
 
