@@ -3,3 +3,9 @@ uvicorn
 google-genai
 python-dotenv
 pydantic
+pymongo
+websockets
+requests
+beautifulsoup4
+lxml
+groq

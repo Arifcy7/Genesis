@@ -21,11 +21,11 @@ export default function Pricing() {
     },
     {
       name: "Pro",
-      price: "500",
+      price: "29",
       icon: <Siren size={20} className="text-white" />,
       badge: "Most Popular",
       desc: "Ideal for professionals and content creators.",
-      limits: ["150 Checks/Day", "Advanced AI"],
+      limits: ["Unlimited Checks", "Advanced AI"],
       features: [
         "Unlimited fact checking",
         "Advanced AI analysis",
@@ -36,12 +36,12 @@ export default function Pricing() {
       ]
     },
     {
-      name: "Pro Max",
-      price: "3000",
+      name: "Enterprise",
+      price: "Custom",
       icon: <FileText size={20} className="text-white" />,
-      badge: "For Power Users",
+      badge: "For Teams",
       desc: "Advanced solutions for organizations and newsrooms.",
-      limits: ["Unlimited Access", "API Integration"],
+      limits: ["Team Access", "API Integration"],
       features: [
         "Everything in Pro",
         "Team collaboration tools",
@@ -118,7 +118,7 @@ export default function Pricing() {
 
               {/* Price */}
               <div className="flex items-baseline gap-1 mb-3 sm:mb-4">
-                <span className="text-3xl sm:text-4xl lg:text-5xl font-bold">₹{plan.price}</span>
+                <span className="text-3xl sm:text-4xl lg:text-5xl font-bold">${plan.price}</span>
                 <span className="text-gray-500 text-xs sm:text-sm font-medium">/ Month</span>
               </div>
 

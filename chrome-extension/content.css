@@ -1,39 +1,39 @@
-/* content.css - Genesis Styles */
+/* content.css - Veritas Styles */
 
-#genesis-widget {
+#veritas-widget {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
   line-height: 1.4 !important;
   letter-spacing: 0 !important;
 }
 
-#genesis-widget * {
+#veritas-widget * {
   box-sizing: border-box !important;
   font-family: inherit !important;
 }
 
-#genesis-widget a:hover {
+#veritas-widget a:hover {
   text-decoration: underline !important;
   opacity: 0.8 !important;
 }
 
-#genesis-widget button:hover {
+#veritas-widget button:hover {
   opacity: 0.9 !important;
 }
 
 /* Scrollbar for scan results */
-#genesis-widget div::-webkit-scrollbar {
+#veritas-widget div::-webkit-scrollbar {
   width: 6px;
 }
 
-#genesis-widget div::-webkit-scrollbar-track {
+#veritas-widget div::-webkit-scrollbar-track {
   background: #1e293b;
 }
 
-#genesis-widget div::-webkit-scrollbar-thumb {
+#veritas-widget div::-webkit-scrollbar-thumb {
   background: #475569;
   border-radius: 3px;
 }
 
-#genesis-widget div::-webkit-scrollbar-thumb:hover {
+#veritas-widget div::-webkit-scrollbar-thumb:hover {
   background: #64748b;
 }

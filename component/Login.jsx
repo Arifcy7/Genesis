@@ -95,7 +95,7 @@ export default function Login() {
                 <div className="w-7 h-7 rounded-lg bg-[#7C3AED] flex items-center justify-center shadow-[0_0_15px_#7C3AED]">
                     <Zap size={16} fill="white" className="text-white" />
                 </div>
-                <span className="text-lg font-bold tracking-tight">Genesis</span>
+                <span className="text-lg font-bold tracking-tight">Veritas</span>
             </div>
         </div>
 
@@ -241,7 +241,7 @@ export default function Login() {
                      <Zap size={24} fill="white" />
                   </div>
                   <div>
-                     <h3 className="text-lg font-bold text-white">Genesis Intelligence</h3>
+                     <h3 className="text-lg font-bold text-white">Veritas Intelligence</h3>
                      <p className="text-sm text-[#7C3AED]">Real-time Verification</p>
                   </div>
                </div>

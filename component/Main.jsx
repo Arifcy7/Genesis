@@ -127,7 +127,7 @@ const ChatInterface = ({
   };
 
   return (
-    <div className="flex flex-col w-full bg-[#050505] relative font-sans text-white overflow-hidden border-t border-white/10 md:border md:rounded-2xl md:mx-4 md:mb-4 h-[calc(100dvh-64px)] md:h-[calc(100vh-120px)] mt-16 md:mt-24">
+    <div className="flex flex-col w-full bg-[#050505] relative font-sans text-white overflow-hidden border-t border-white/10 md:border md:rounded-2xl md:mx-4 md:mb-4 h-[calc(100dvh-64px)] md:h-[calc(100vh-120px)] mt-20 md:mt-28">
       {/* Background */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(#ffffff 1px, transparent 1px)', backgroundSize: '20px 20px' }} />
       
@@ -138,7 +138,7 @@ const ChatInterface = ({
              <Activity size={16} className="text-white" />
            </div>
            <div>
-             <h1 className="font-mono font-bold text-white text-sm tracking-tight">AGENTIC <span className="text-[#7C3AED]">VERIFIER</span></h1>
+             <h1 className="font-mono font-bold text-white text-sm tracking-tight">GENESIS <span className="text-[#7C3AED]">AI</span></h1>
              <p className="text-[10px] text-gray-400 font-mono flex items-center gap-1.5">
                <span className={`w-1.5 h-1.5 rounded-full ${getModeColor()}`}></span>
                {getModeDisplay()}
@@ -266,32 +266,62 @@ const ChatInterface = ({
 
                     {/* Sources section - ALWAYS show for bot messages with sources */}
                     {msg.sender === 'bot' && msg.metadata?.sources && msg.metadata.sources.length > 0 && (
-                      <div className="mt-4 p-3 bg-black/20 rounded-lg border border-white/5">
-                        <div className="flex items-center gap-2 mb-3">
-                          <ShieldCheck size={16} className="text-blue-400" />
-                          <span className="text-sm font-medium text-blue-400">Verified Sources</span>
+                      <div className="mt-4 p-4 bg-gradient-to-br from-black/30 to-black/20 rounded-xl border border-white/10 backdrop-blur-sm">
+                        <div className="flex items-center gap-2 mb-4">
+                          <ShieldCheck size={18} className="text-blue-400" />
+                          <span className="text-sm font-semibold text-blue-400">Evidence from {msg.metadata.sources.length} Verified Sources</span>
                         </div>
-                        <div className="space-y-2">
-                          {msg.metadata.sources.slice(0, 6).map((source, idx) => (
-                            <a
+                        <div className="space-y-3">
+                          {msg.metadata.sources.slice(0, 15).map((source, idx) => (
+                            <div
                               key={idx}
-                              href={source.uri}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="flex items-start gap-3 p-2 bg-white/5 rounded hover:bg-white/10 transition-colors group"
+                              className="group relative p-4 bg-black/30 rounded-lg border border-white/5 hover:border-blue-500/30 transition-all duration-200"
                             >
-                              <div className="text-blue-300 text-xs mt-1 font-mono">
-                                [{idx + 1}]
-                              </div>
-                              <div className="flex-1 min-w-0">
-                                <div className="text-sm text-blue-300 group-hover:text-blue-200 font-medium line-clamp-2">
-                                  {source.title}
+                              {/* Source header */}
+                              <div className="flex items-start gap-3 mb-2">
+                                <div className="flex-shrink-0 w-6 h-6 flex items-center justify-center rounded-full bg-blue-500/20 text-blue-300 text-xs font-bold">
+                                  {idx + 1}
                                 </div>
-                                <div className="text-xs text-gray-500 truncate mt-1">
-                                  {new URL(source.uri).hostname}
+                                <div className="flex-1 min-w-0">
+                                  <a
+                                    href={source.uri}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="text-sm text-blue-300 hover:text-blue-200 font-medium line-clamp-2 underline decoration-dotted underline-offset-2"
+                                  >
+                                    {source.title}
+                                  </a>
+                                  <div className="text-xs text-gray-500 mt-1 flex items-center gap-2">
+                                    <span className="truncate">{new URL(source.uri).hostname}</span>
+                                  </div>
                                 </div>
                               </div>
-                            </a>
+                              
+                              {/* Snippet section - beautiful quote display */}
+                              {source.snippet && source.snippet !== "Snippet unavailable" && source.snippet !== "Snippet extraction failed" && (
+                                <div className="mt-3 pl-9 pr-2">
+                                  <div className="relative p-3 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-lg border-l-4 border-blue-400/50">
+                                    <div className="absolute -left-2 top-2 text-blue-400/40 text-4xl leading-none">"</div>
+                                    <p className="text-sm text-gray-300 leading-relaxed italic">
+                                      {source.snippet}
+                                    </p>
+                                    <div className="absolute -right-1 bottom-1 text-blue-400/40 text-4xl leading-none">"</div>
+                                  </div>
+                                </div>
+                              )}
+                              
+                              {/* Snippet status indicators */}
+                              {source.snippet === "Snippet unavailable" && (
+                                <div className="mt-2 pl-9 text-xs text-gray-500 italic">
+                                  Source verification available, snippet not extracted
+                                </div>
+                              )}
+                              {source.snippet === "Snippet extraction failed" && (
+                                <div className="mt-2 pl-9 text-xs text-yellow-500/70 italic">
+                                  Could not extract snippet from this source
+                                </div>
+                              )}
+                            </div>
                           ))}
                         </div>
                       </div>

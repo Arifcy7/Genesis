@@ -6,21 +6,89 @@ from typing import Dict, List, Any, Optional
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-from google import genai
+from google import genai  # Keep for voice/audio only
 from google.genai import types
 from dotenv import load_dotenv
 import websockets
+import requests
+from bs4 import BeautifulSoup
+import re
+from groq import Groq  # For text-based agents
 
 # Load environment variables from .env file
 load_dotenv()
-# Initialize API key  
-API_KEY = os.getenv("GOOGLE_API_KEY") 
-if not API_KEY:
-    raise ValueError("GOOGLE_API_KEY must be set")
 
-print(f"✅ API Key loaded: {API_KEY[:10]}...")
+# GROQ API KEY (for text-based agents - FREE & UNLIMITED)
+GROQ_API_KEY = os.getenv('GROQ_API_KEY')
+if not GROQ_API_KEY:
+    raise ValueError("GROQ_API_KEY must be set in .env")
 
-ai = genai.Client(api_key=API_KEY)
+# Google API Key Pool (COMMENTED - kept for voice/audio only)
+# API_KEYS = [
+#     os.getenv('GOOGLE_API_KEY'),
+#     os.getenv('GOOGLE_API_KEY_2'),
+#     os.getenv('GOOGLE_API_KEY_3'),
+#     os.getenv('GOOGLE_API_KEY_4'),
+#     os.getenv('GOOGLE_API_KEY_5'),
+# ]
+# API_KEYS = [key for key in API_KEYS if key]
+# if not API_KEYS:
+#     raise ValueError("No API keys configured! Set at least GOOGLE_API_KEY in .env")
+
+# Keep one Google API key for voice/audio functionality
+GOOGLE_API_KEY_VOICE = os.getenv('GOOGLE_API_KEY')
+if not GOOGLE_API_KEY_VOICE:
+    raise ValueError("GOOGLE_API_KEY must be set for voice functionality")
+
+# Google API Keys Pool for Check Agent rotation
+GOOGLE_API_KEYS = [
+    os.getenv('GOOGLE_API_KEY'),
+    os.getenv('GOOGLE_API_KEY_2'),
+    os.getenv('GOOGLE_API_KEY_3'),
+    os.getenv('GOOGLE_API_KEY_4'),
+    os.getenv('GOOGLE_API_KEY_5'),
+]
+GOOGLE_API_KEYS = [key for key in GOOGLE_API_KEYS if key]
+
+# Track current Google API key index for rotation
+google_key_index = 0
+
+def get_next_google_key():
+    """Round-robin rotation for Google API keys (Check Agent only)"""
+    global google_key_index
+    key = GOOGLE_API_KEYS[google_key_index]
+    google_key_index = (google_key_index + 1) % len(GOOGLE_API_KEYS)
+    print(f"🔑 Using Google API key #{google_key_index + 1}/{len(GOOGLE_API_KEYS)} for Check Agent")
+    return key
+
+# Track current key index for round-robin rotation (COMMENTED - not needed for Groq)
+# current_key_index = 0
+# def get_next_api_key():
+#     """Round-robin API key rotation to distribute quota"""
+#     global current_key_index
+#     key = API_KEYS[current_key_index]
+#     current_key_index = (current_key_index + 1) % len(API_KEYS)
+#     print(f"🔑 Using API key #{current_key_index + 1}/{len(API_KEYS)}")
+#     return key
+
+# In-memory snippet cache to avoid refetching same URLs
+snippet_cache = {}
+
+# Feature flags
+ENABLE_SNIPPET_EXTRACTION = os.getenv('ENABLE_SNIPPET_EXTRACTION', 'true').lower() == 'true'
+SNIPPET_DELAY_SECONDS = float(os.getenv('SNIPPET_DELAY_SECONDS', '0.5'))  # Delay between snippet requests
+MAX_SNIPPETS = int(os.getenv('MAX_SNIPPETS', '5'))  # Max number of snippets to extract
+
+# Initialize Groq client (for text-based agents)
+groq_client = Groq(api_key=GROQ_API_KEY)
+
+# Initialize Gemini client (for voice/audio only)
+gemini_voice_client = genai.Client(api_key=GOOGLE_API_KEY_VOICE)
+
+print(f"✅ Groq API Key loaded: {GROQ_API_KEY[:10]}...")
+print(f"✅ Google API Key (voice only): {GOOGLE_API_KEY_VOICE[:10]}...")
+print(f"🚀 Using Groq for text agents (FREE & UNLIMITED)")
+print(f"🎤 Using Gemini for voice/audio only")
 
 app = FastAPI()
 
@@ -58,14 +126,132 @@ CHECKER_TOOLS = [
     {"google_search": {}}
 ]
 
+# --- HELPER: FETCH SOURCE SNIPPET ---
+async def fetch_snippet_from_source(uri: str, query: str, max_length: int = 10000) -> Optional[str]:
+    """
+    Fetches the actual webpage content and extracts exact verbatim quotes
+    that are relevant to the given query. Uses caching to avoid redundant requests.
+    """
+    # Check cache first
+    cache_key = f"{uri}:{query[:50]}"
+    if cache_key in snippet_cache:
+        print(f"📦 Using cached snippet for {uri[:50]}...")
+        return snippet_cache[cache_key]
+    
+    try:
+        # Fetch with timeout and user agent
+        headers = {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+        }
+        response = requests.get(uri, timeout=5, headers=headers, allow_redirects=True)
+        response.raise_for_status()
+        
+        # Parse HTML
+        soup = BeautifulSoup(response.content, 'lxml')
+        
+        # Remove script and style elements
+        for script in soup(["script", "style", "nav", "footer", "header"]):
+            script.decompose()
+        
+        # Get text content
+        text = soup.get_text(separator=' ', strip=True)
+        
+        # Clean up whitespace
+        text = re.sub(r'\s+', ' ', text).strip()
+        
+        # Limit text length to avoid huge API calls
+        if len(text) > max_length:
+            text = text[:max_length]
+        
+        # Split into sentences (simple sentence boundary detection)
+        sentences = re.split(r'(?<=[.!?])\s+', text)
+        
+        # Extract keywords from query for matching
+        query_keywords = set(re.findall(r'\b\w{3,}\b', query.lower()))
+        
+        # Score each sentence by keyword overlap
+        scored_sentences = []
+        for sentence in sentences:
+            if len(sentence) < 20 or len(sentence) > 500:  # Skip very short/long sentences
+                continue
+            
+            sentence_words = set(re.findall(r'\b\w{3,}\b', sentence.lower()))
+            overlap = len(query_keywords & sentence_words)
+            
+            if overlap > 0:
+                scored_sentences.append((overlap, sentence))
+        
+        # Sort by relevance and take top 2-3 sentences
+        scored_sentences.sort(reverse=True, key=lambda x: x[0])
+        top_sentences = [sent for _, sent in scored_sentences[:3]]
+        
+        if not top_sentences:
+            # Fallback: use Gemini to identify relevant sentences, then extract exact text
+            # Use rotating Google API key for snippet extraction
+            snippet_client = genai.Client(api_key=get_next_google_key())
+            snippet_ai = snippet_client.aio
+            
+            snippet_prompt = f"""From this article, identify which sentences are most relevant to: "{query}"
+
+Article text:
+{text[:5000]}
+
+List the first 5-10 words of each relevant sentence, so I can find them in the original text."""
+            
+            snippet_response = await snippet_ai.models.generate_content(
+                model="gemini-2.5-flash",
+                contents=snippet_prompt,
+                config={"temperature": 0.0}
+            )
+            
+            hints = snippet_response.text or ""
+            
+            # Try to find sentences matching the hints
+            for hint_line in hints.split('\n'):
+                hint = re.sub(r'^[-*•]\s*', '', hint_line).strip()[:50]
+                if len(hint) < 10:
+                    continue
+                    
+                for sentence in sentences:
+                    if hint.lower() in sentence.lower()[:100]:
+                        top_sentences.append(sentence)
+                        if len(top_sentences) >= 3:
+                            break
+                if len(top_sentences) >= 3:
+                    break
+        
+        if top_sentences:
+            snippet = ' '.join(top_sentences[:3])
+            # Limit total length
+            if len(snippet) > 500:
+                snippet = snippet[:500] + "..."
+            result = f'"{snippet}"'  # Wrap in quotes to show it's verbatim
+            # Cache the result
+            snippet_cache[cache_key] = result
+            return result
+        else:
+            no_snippet = "No relevant snippet found"
+            snippet_cache[cache_key] = no_snippet
+            return no_snippet
+        
+    except requests.Timeout:
+        return "Source timeout - could not fetch content"
+    except requests.RequestException as e:
+        return f"Could not access source: {str(e)[:50]}"
+    except Exception as e:
+        print(f"Snippet extraction error for {uri}: {e}")
+        return "Snippet extraction failed"
+
 # --- AGENT 0: TRANSCRIBER ---
 async def transcribe_audio(base64_audio: str, mime_type: str = "audio/webm") -> str:
     try:
+        # Use rotating API key
+        client = get_ai_client()
         clean_mime = mime_type.split(';')[0].strip()
         if not clean_mime:
             clean_mime = 'audio/webm'
         
-        response = ai.models.generate_content(
+        response = client.models.generate_content(
             model="gemini-2.5-flash",
             contents={
                 "parts": [
@@ -100,18 +286,18 @@ orchestrator_schema = {
 
 async def run_main_agent(user_text: str) -> Dict[str, Any]:
     try:
-        response = ai.models.generate_content(
-            model="gemini-2.5-flash",
-            contents=user_text,
-            config={
-                "system_instruction": "You are the Main Agent. Route queries. If factual/news/weather, DELEGATE_TO_CHECKER. If user asks to scan, monitor, or find latest rumors, use SCAN_CRISIS.",
-                "response_mime_type": "application/json",
-                "response_schema": orchestrator_schema,
-                "temperature": 0.3
-            }
+        # Use Groq for text-based routing
+        response = groq_client.chat.completions.create(
+            model="llama-3.3-70b-versatile",
+            messages=[
+                {"role": "system", "content": "You are the Main Agent. Route queries. If factual/news/weather, DELEGATE_TO_CHECKER. If user asks to scan, monitor, or find latest rumors, use SCAN_CRISIS. Respond ONLY with valid JSON matching this schema: {\"action\": \"DIRECT_REPLY|DELEGATE_TO_CHECKER|SCAN_CRISIS\", \"reasoning\": \"string\", \"reply_text\": \"string\", \"checker_query\": \"string\", \"scan_topic\": \"string\"}"},
+                {"role": "user", "content": user_text}
+            ],
+            temperature=0.3,
+            response_format={"type": "json_object"}
         )
         
-        text = response.text
+        text = response.choices[0].message.content
         if not text:
             raise Exception("No response")
         
@@ -121,16 +307,46 @@ async def run_main_agent(user_text: str) -> Dict[str, Any]:
         return {"action": "DIRECT_REPLY", "reasoning": "Error", "reply_text": "System error."}
 
 # --- AGENT 2: CHECK AGENT ---
-async def run_check_agent(query: str) -> Dict[str, Any]:
+# NOTE: Still using Gemini for Check Agent because it has Google Search grounding
+# Groq doesn't have built-in search capability
+async def run_check_agent(query: str, extract_snippets: bool = True) -> Dict[str, Any]:
+    # Try each Google API key in rotation until one works
+    last_error = None
+    
+    for attempt in range(len(GOOGLE_API_KEYS)):
+        try:
+            # Use rotating Google API key for Check Agent
+            current_key = get_next_google_key()
+            gemini_client = genai.Client(api_key=current_key)
+            response = gemini_client.models.generate_content(
+                model="gemini-2.5-flash",
+                contents=f'Fact check: "{query}". Format: VERDICT: [REAL/FAKE/UNCERTAIN], CONFIDENCE: [0.0-1.0], EXPLANATION: [...]',
+                config={
+                    "tools": CHECKER_TOOLS,
+                    "temperature": 0.1
+                }
+            )
+            
+            # If we got here, the request succeeded - break out of retry loop
+            break
+            
+        except Exception as e:
+            last_error = e
+            error_msg = str(e)
+            
+            # Check if it's a quota/rate limit error
+            if "429" in error_msg or "RESOURCE_EXHAUSTED" in error_msg or "quota" in error_msg.lower():
+                print(f"⚠️ API key exhausted, trying next key... ({attempt + 1}/{len(GOOGLE_API_KEYS)})")
+                if attempt < len(GOOGLE_API_KEYS) - 1:
+                    continue  # Try next key
+                else:
+                    print(f"❌ All {len(GOOGLE_API_KEYS)} Google API keys exhausted!")
+                    raise Exception("All Google API keys have reached their quota limit")
+            else:
+                # If it's not a quota error, don't retry
+                raise e
+    
     try:
-        response = ai.models.generate_content(
-            model="gemini-2.5-flash",
-            contents=f'Fact check: "{query}". Format: VERDICT: [REAL/FAKE/UNCERTAIN], CONFIDENCE: [0.0-1.0], EXPLANATION: [...]',
-            config={
-                "tools": CHECKER_TOOLS,
-                "temperature": 0.1
-            }
-        )
         
         grounding_chunks = []
         if response.candidates and len(response.candidates) > 0:
@@ -148,7 +364,6 @@ async def run_check_agent(query: str) -> Dict[str, Any]:
         confidence = 0.5
         
         # Parse verdict
-        import re
         verdict_match = re.search(r'VERDICT:\s*(REAL|FAKE|UNCERTAIN)', text, re.IGNORECASE)
         if verdict_match:
             verdict = verdict_match.group(1).upper()
@@ -163,11 +378,39 @@ async def run_check_agent(query: str) -> Dict[str, Any]:
         explanation = re.sub(r'CONFIDENCE:.*(\n|$)', '', explanation, flags=re.IGNORECASE)
         explanation = explanation.strip()
         
+        # NEW: Extract snippets from top sources (5-10 sources, sequential)
+        if extract_snippets and sources and ENABLE_SNIPPET_EXTRACTION:
+            num_sources = min(len(sources), MAX_SNIPPETS)  # Process up to MAX_SNIPPETS
+            print(f"🔍 Extracting snippets from {num_sources} sources sequentially...")
+            
+            # Sequential extraction (not parallel) to avoid rate limits
+            for i in range(num_sources):
+                try:
+                    snippet = await fetch_snippet_from_source(sources[i]['uri'], query)
+                    sources[i]['snippet'] = snippet if snippet else "Snippet unavailable"
+                    
+                    # Add delay between requests to avoid rate limiting
+                    if i < num_sources - 1:  # Don't delay after last request
+                        await asyncio.sleep(SNIPPET_DELAY_SECONDS)
+                        
+                except Exception as e:
+                    error_msg = str(e)
+                    if "429" in error_msg or "RESOURCE_EXHAUSTED" in error_msg:
+                        print(f"⚠️ Rate limit hit on snippet {i+1}, stopping extraction")
+                        sources[i]['snippet'] = "Rate limit reached"
+                        # Stop extracting more snippets if we hit rate limit
+                        for j in range(i+1, num_sources):
+                            sources[j]['snippet'] = "Extraction skipped (rate limit)"
+                        break
+                    else:
+                        print(f"Error extracting snippet {i+1}: {e}")
+                        sources[i]['snippet'] = "Snippet extraction failed"
+        
         return {
             "verdict": verdict,
             "confidence": confidence,
             "explanation": explanation,
-            "sources": sources[:5]
+            "sources": sources[:15]  # Return up to 15 sources
         }
     except Exception as error:
         print(f"Check Agent Error: {error}")
@@ -181,7 +424,9 @@ async def run_check_agent(query: str) -> Dict[str, Any]:
 # --- AGENT 4: IMAGE AGENT ---
 async def process_image_content(base64_image: str, user_message: str = "") -> Dict[str, Any]:
     try:
-        response = ai.models.generate_content(
+        # Use rotating API key
+        client = get_ai_client()
+        response = client.models.generate_content(
             model="gemini-2.5-flash",
             contents={
                 "parts": [
@@ -224,7 +469,9 @@ orchestrator_schema = {
 }
 async def scan_crisis_trends(topic: str) -> List[Dict[str, Any]]:
     try:
-        scan_response = ai.models.generate_content(
+        # Use rotating API key
+        client = get_ai_client()
+        scan_response = client.models.generate_content(
             model="gemini-2.5-flash",
             contents=f'Find the top 3 trending rumors, news headlines, or viral claims currently circulating about: "{topic}". Return ONLY a JSON array of strings, no markdown.',
             config={
@@ -318,20 +565,22 @@ Example format:
 *This assessment is based on verification from multiple reliable sources.*
 """
 
-        response = ai.models.generate_content(
-            model="gemini-2.5-flash",
-            contents=synthesis_prompt,
-            config={
-                "temperature": 0.3,
-                "max_output_tokens": 800
-            }
+        # Use Groq for synthesis (fast & free)
+        response = groq_client.chat.completions.create(
+            model="llama-3.3-70b-versatile",
+            messages=[
+                {"role": "system", "content": "You are a professional fact-checker. Create clear, well-structured responses with emojis and confidence levels."},
+                {"role": "user", "content": synthesis_prompt}
+            ],
+            temperature=0.3,
+            max_tokens=800
         )
         
-        if response and response.text and response.text.strip():
-            return response.text.strip()
+        if response and response.choices and response.choices[0].message.content:
+            return response.choices[0].message.content.strip()
 
-        # If response.text is empty, raise exception to trigger fallback
-        raise ValueError(f"Empty response from synthesis model. Response object: {bool(response)}, Response text: '{getattr(response, 'text', 'No text attribute')}'")
+        # If response is empty, raise exception to trigger fallback
+        raise ValueError(f"Empty response from synthesis model")
 
     except Exception as e:
         print(f"Synthesis Error: {e}")
@@ -410,8 +659,8 @@ async def websocket_live_session(websocket: WebSocket):
     print("🎤 VOICE: Connected")
     
     try:
-        # Use the correct Gemini Live WebSocket URL 
-        gemini_ws_url = f"wss://generativelanguage.googleapis.com/ws/google.ai.generativelanguage.v1beta.GenerativeService.BidiGenerateContent?key={API_KEY}"
+        # Use the correct Gemini Live WebSocket URL (use GOOGLE_API_KEY_VOICE for voice)
+        gemini_ws_url = f"wss://generativelanguage.googleapis.com/ws/google.ai.generativelanguage.v1beta.GenerativeService.BidiGenerateContent?key={GOOGLE_API_KEY_VOICE}"
         
         # Connect directly to Gemini Live WebSocket
         async with websockets.connect(gemini_ws_url) as gemini_ws:

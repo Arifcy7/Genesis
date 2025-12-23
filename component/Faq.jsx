@@ -150,7 +150,7 @@ export default function FAQ() {
           </h1>
 
           <p className="text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
-            Find answers to the most common questions about our AI-powered fact-checking system and how to get the most out of Genesis.
+            Find answers to the most common questions about our AI-powered fact-checking system and how to get the most out of Veritas.
           </p>
         </div>
       </section>

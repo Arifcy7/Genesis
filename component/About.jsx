@@ -49,7 +49,7 @@ export default function About() {
 
         {/* Text */}
         <h1 className="max-w-4xl mx-auto text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-[56px] font-semibold leading-[1.2] tracking-tight mb-6 sm:mb-8 px-2 sm:px-4 text-white">
-          Built on creativity, collaboration, and top excellence, Genesis is a dynamic team committed to <span className="text-white/30">exceptional results...</span>
+          Built on creativity, collaboration, and top excellence, Veritas is a dynamic team committed to <span className="text-white/30">exceptional results...</span>
         </h1>
 
         <button className="bg-gray-100 hover:bg-white text-black px-6 sm:px-8 py-3 sm:py-3.5 rounded-lg font-medium transition-colors duration-200 mb-12 sm:mb-16 text-sm sm:text-base">
@@ -80,7 +80,7 @@ export default function About() {
             Packed with Innovation.
           </h2>
           <p className="text-gray-400 text-base sm:text-lg md:text-xl max-w-2xl mx-auto mb-6 sm:mb-8 px-2 sm:px-4 leading-relaxed">
-            Genesis is packed with cutting-edge features designed to <br className="hidden sm:block" /> elevate truth verification and misinformation detection.
+            Veritas is packed with cutting-edge features designed to <br className="hidden sm:block" /> elevate truth verification and misinformation detection.
           </p>
           <button className="bg-gradient-to-r from-indigo-500/20 to-purple-500/20 hover:from-indigo-500/30 hover:to-purple-500/30 border border-indigo-500/30 text-white px-6 sm:px-8 py-3 sm:py-3.5 rounded-lg font-medium backdrop-blur-md transition-all duration-200 shadow-[0_0_20px_rgba(99,102,241,0.15)] hover:shadow-[0_0_30px_rgba(99,102,241,0.3)] text-sm sm:text-base">
             View Documentation

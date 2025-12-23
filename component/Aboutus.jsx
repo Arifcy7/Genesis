@@ -58,7 +58,7 @@ export default function AboutUs() {
         <div className="relative z-20 text-center px-4 max-w-4xl mx-auto mt-20">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-6 animate-fade-in-up">
              <span className="bg-[#6d28d9] text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow-[0_0_10px_rgba(109,40,217,0.4)]">
-               About Genesis
+               About Veritas
              </span>
              <span className="text-sm text-gray-300 font-medium">Truth Through Technology</span>
           </div>
@@ -85,7 +85,7 @@ export default function AboutUs() {
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-transparent to-transparent opacity-60" />
                   <img
                     src="https://cdn.pixabay.com/photo/2024/04/09/16/30/ai-generated-8686301_1280.jpg"
-                    alt="Genesis AI Technology"
+                    alt="Veritas AI Technology"
                     loading="lazy"
                     className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
                   />
@@ -109,7 +109,7 @@ export default function AboutUs() {
                   Multi-Agent <span className="text-[#6d28d9]">AI Ecosystem</span> for Truth Verification
                 </h2>
                 <p className="text-gray-400 text-lg leading-relaxed mb-6">
-                  Genesis operates a sophisticated network of specialized AI agents that work together to combat misinformation. Our system includes dedicated agents for audio transcription, main orchestration, fact-checking, image analysis, and crisis trend monitoring.
+                  Veritas operates a sophisticated network of specialized AI agents that work together to combat misinformation. Our system includes dedicated agents for audio transcription, main orchestration, fact-checking, image analysis, and crisis trend monitoring.
                 </p>
                 <p className="text-gray-400 text-lg leading-relaxed">
                   With advanced integration of Google's Gemini AI, real-time voice processing, WebSocket connectivity, and comprehensive source verification, we deliver instant, accurate fact-checking through multiple interfaces including web application and voice interaction.
@@ -209,7 +209,7 @@ export default function AboutUs() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-5xl font-bold mb-6">
-              Why Choose <span className="text-[#6d28d9]">Genesis</span>
+              Why Choose <span className="text-[#6d28d9]">Veritas</span>
             </h2>
             <p className="text-gray-400 max-w-2xl mx-auto">
               Advanced multi-agent AI system with specialized capabilities for comprehensive fact-checking and misinformation detection.

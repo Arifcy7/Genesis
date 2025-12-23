@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "Genesis - Agentic Fact Checker",
+  "name": "Veritas - Agentic Fact Checker",
   "version": "2.0.0",
-  "description": "Agentic AI verification using Genesis Swarm Architecture.",
+  "description": "Agentic AI verification using Veritas Swarm Architecture.",
   "permissions": [
     "activeTab",
     "storage",
@@ -27,7 +27,7 @@
   ],
   "action": {
     "default_popup": "popup.html",
-    "default_title": "Genesis Agent"
+    "default_title": "Veritas Agent"
   },
   "icons": {
     "16": "icons/icon16.png",

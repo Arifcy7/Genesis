@@ -205,7 +205,6 @@ async def analyze_data_with_ai(user_query: str, data: Dict[str, Any], company_na
         
         data_context = json.dumps(data_summary, indent=2, default=str)[:4000]
         
-        print(f"🤖 Calling AI for analysis...")
         response = ai.models.generate_content(
             model="gemini-2.5-flash",
             contents=f"""You are a data analyst assistant for {company_name}. 
@@ -228,19 +227,10 @@ Format your response in markdown.""",
             config={"temperature": 0.3}
         )
         
-        print(f"✅ AI response received")
         return response.text or "I couldn't analyze the data."
     except Exception as error:
-        print(f"❌ AI Analysis Error: {error}")
-        import traceback
-        traceback.print_exc()
-        
-        # Check if it's an API quota error
-        error_str = str(error).lower()
-        if 'quota' in error_str or '429' in error_str or 'resource_exhausted' in error_str:
-            return "⚠️ **API Quota Exhausted**\n\nThe Google Gemini API has reached its daily limit. Please:\n1. Wait for the quota to reset\n2. Add a new API key in the .env file\n3. Or upgrade to a paid API plan\n\nNote: Free tier allows only 20 requests per day."
-        
-        return f"I encountered an error analyzing the data: {str(error)[:100]}"
+        print(f"AI Analysis Error: {error}")
+        return "I encountered an error analyzing the data."
 
 async def process_data_query(company_id: str, user_query: str) -> Dict[str, Any]:
     """Main function to process data queries"""

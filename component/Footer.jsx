@@ -26,7 +26,7 @@ export default function Footer() {
 
            <div className="relative z-10 text-center md:text-left">
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-2 sm:mb-3 leading-tight">Ready to verify the truth?</h2>
-              <p className="text-gray-400 text-sm sm:text-base">Join thousands of users using Genesis today.</p>
+              <p className="text-gray-400 text-sm sm:text-base">Join thousands of users using Veritas today.</p>
            </div>
 
            <div className="relative z-10 flex flex-col sm:flex-row gap-3 sm:gap-4 w-full md:w-auto">
@@ -49,7 +49,7 @@ export default function Footer() {
                     <Zap size={16} className="text-white fill-white sm:hidden" />
                     <Zap size={18} className="text-white fill-white hidden sm:block" />
                   </div>
-                  Genesis
+                  Veritas
               </div>
               <p className="text-gray-400 text-xs sm:text-sm leading-relaxed max-w-xs">
                  The world's leading AI-powered verification platform. We help you separate fact from fiction in real-time.
@@ -119,7 +119,7 @@ export default function Footer() {
         {/* --- COPYRIGHT --- */}
         <div className="pt-6 sm:pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-3 sm:gap-4">
            <p className="text-gray-500 text-xs sm:text-sm text-center md:text-left">
-              &copy; 2024 Genesis AI Inc. All rights reserved.
+              &copy; 2024 Veritas AI Inc. All rights reserved.
            </p>
            <div className="flex gap-4 sm:gap-6 text-xs sm:text-sm text-gray-500">
               <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
