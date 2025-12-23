@@ -13,7 +13,7 @@
 
 </div>
 
-## 🎯 Built for MumbaiHacks 2025 - Misinformation Track
+## 🎯 Built for AWS IMPACT X 2025 - Misinformation Track
 
 **Genesis** is the world's most advanced Multi-Agent Truth Verification System that deploys 7 autonomous AI agents to combat misinformation at scale. Unlike reactive fact-checkers, Genesis operates proactively through swarm intelligence, processing text, voice, images, and data streams simultaneously.
 
@@ -255,7 +255,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🙏 Acknowledgments
 
-- **MumbaiHacks 2025** for the misinformation challenge
+- **AWS IMPACT 2025** for the misinformation challenge
 - **Google Gemini** for powering our AI agents
 - **MongoDB** for temporal graph storage
 - **FastAPI** for high-performance backend
