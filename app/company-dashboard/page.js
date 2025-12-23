@@ -151,7 +151,7 @@ export default function CompanyDashboard() {
           <circle cx="100" cy="90" r="5" fill={color} />
         </svg>
         <div className="absolute bottom-0 w-full text-center">
-        </div>
+4rul.;'5'        </div>
       </div>
     );
   };
